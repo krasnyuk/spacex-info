@@ -29,6 +29,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/app/styles/main.scss",
               "src/styles.scss"
             ],
             "scripts": []
