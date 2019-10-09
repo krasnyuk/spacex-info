@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
   selector: 'spx-page-layout',
@@ -8,9 +8,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class PageLayoutComponent implements OnInit {
 
-  constructor() { }
+  readonly headerHeight = 64;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
-
 }

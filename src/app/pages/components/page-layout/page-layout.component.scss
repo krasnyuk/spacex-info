@@ -1,0 +1,16 @@
+$content-padding: 15px;
+$header-height: 64px;
+
+.sidenav-menu {
+  height: 100%;
+
+  &__content {
+    margin-top: $header-height;
+    padding: $content-padding;
+  }
+
+  &__navigation-section {
+    padding: $content-padding;
+    width: 15vw;
+  }
+}

@@ -3,15 +3,21 @@ import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { PageLayoutComponent } from './components/page-layout/page-layout.component';
-import {MatToolbarModule} from "@angular/material";
+import {MatSidenavModule, MatToolbarModule} from "@angular/material";
+import { HeaderComponent } from './components/header/header.component';
+import {SharedModule} from "../shared/shared.module";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
-  declarations: [PageLayoutComponent],
+  declarations: [PageLayoutComponent, HeaderComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSidenavModule,
+    SharedModule,
+    FlexLayoutModule
   ]
 })
 export class PagesModule { }

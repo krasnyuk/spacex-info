@@ -1,3 +1,13 @@
-<mat-toolbar class="mat-elevation-z3" color="primary">
-  <img class="logo" src="/assets/images/logo.png" alt="SpaceX">
-</mat-toolbar>
+<spx-header></spx-header>
+
+<mat-sidenav-container class="sidenav-menu">
+  <mat-sidenav mode="side" opened class="sidenav-menu__navigation-section"
+               [fixedInViewport]="true" [fixedTopGap]="64"
+               [fixedBottomGap]="0">
+    Sidenav
+  </mat-sidenav>
+
+  <mat-sidenav-content class="sidenav-menu__content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
