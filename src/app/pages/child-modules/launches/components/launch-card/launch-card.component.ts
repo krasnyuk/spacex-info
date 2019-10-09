@@ -1,12 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'spx-launches',
-  templateUrl: './launches.component.html',
-  styleUrls: ['./launches.component.scss'],
+  selector: 'spx-launch-card',
+  templateUrl: './launch-card.component.html',
+  styleUrls: ['./launch-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LaunchesComponent implements OnInit {
+export class LaunchCardComponent implements OnInit {
 
   constructor() { }
 

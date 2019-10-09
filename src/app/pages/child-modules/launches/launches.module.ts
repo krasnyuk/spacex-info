@@ -2,14 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LaunchesRoutingModule } from './launches-routing.module';
-import { LaunchesComponent } from './launches.component';
+import { LaunchesPageComponent } from './components/launches-page/launches-page.component';
+import {MatCardModule} from "@angular/material";
+import { LaunchCardComponent } from './components/launch-card/launch-card.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
-  declarations: [LaunchesComponent],
+  declarations: [LaunchesPageComponent, LaunchCardComponent],
   imports: [
     CommonModule,
-    LaunchesRoutingModule
+    LaunchesRoutingModule,
+    MatCardModule,
+    FlexLayoutModule
   ]
 })
 export class LaunchesModule { }
