@@ -1,6 +1,6 @@
 <mat-card *ngIf="launch" class="launch">
   <mat-card-header fxLayout="row" fxLayoutAlign="space-between start">
-    <mat-card-title>{{launch.mission_name}}</mat-card-title>
+    <mat-card-title class="text-truncate">{{launch.mission_name}}</mat-card-title>
     <mat-card-subtitle>{{launch.launch_date_utc | date}}</mat-card-subtitle>
     <mat-icon [matTooltip]="launch.launch_success ? 'Launch success' : 'Launch failure'"
               [ngClass]="{'mat-icon--warning': !launch.launch_success, 'mat-icon--success': launch.launch_success}">
@@ -11,7 +11,7 @@
     <img class="launch__mission-image" mat-card-image [src]="missionPatchSmall" [alt]="launch.mission_name">
   </div>
   <mat-card-content class="launch__content">
-    <p class="mat-body launch__description">{{launch.details || 'No details available'}}</p>
+    <p class="mat-body text-truncate">{{launch.details || 'No details available'}}</p>
   </mat-card-content>
   <mat-card-actions fxLayout="row" fxLayoutAlign="center">
     <button color="accent" mat-stroked-button>Details</button>
