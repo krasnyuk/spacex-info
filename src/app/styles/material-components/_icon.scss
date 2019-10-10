@@ -1,0 +1,10 @@
+@import "../variables";
+
+.mat-icon {
+  &--success {
+    color: $theme-success;
+  }
+  &--warning {
+    color: $theme-warn;
+  }
+}

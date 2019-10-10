@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+
+.launch {
+  @include mat-elevation(3);
+
+  &:hover {
+    @include mat-elevation(6);
+  }
+}

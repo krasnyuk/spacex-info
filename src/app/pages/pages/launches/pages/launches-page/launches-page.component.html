@@ -1,3 +1,5 @@
-<div *ngIf="launches$ | async as launchesList" @listAnimation fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="1%">
-  <spx-launch-card @listItemAnimation class="launch-card" *ngFor="let launch of launchesList" fxFlex="24"></spx-launch-card>
+<div *ngIf="launches$ | async as launchesList" @listAnimation fxLayout="row wrap" fxLayoutAlign="start start"
+     fxLayoutGap="1%">
+  <spx-launch-card *ngFor="let launch of launchesList" [launch]="launch" @listItemAnimation class="launch-card"
+                   fxFlex="24"></spx-launch-card>
 </div>

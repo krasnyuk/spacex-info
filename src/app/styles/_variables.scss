@@ -3,7 +3,9 @@
 $palette-primary: mat-palette($mat-indigo);
 $palette-accent: mat-palette($mat-orange, A200, A100, A400);
 $palette-warn: mat-palette($mat-red);
+$palette-success: mat-palette($mat-green);
 
 $theme-primary: mat-color($palette-primary);
 $theme-accent: mat-color($palette-accent);
 $theme-warn: mat-color($palette-warn);
+$theme-success: mat-color($palette-success);

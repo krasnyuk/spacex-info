@@ -1,16 +1,16 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+<mat-card *ngIf="launch" class="launch">
+  <mat-card-header fxLayout="row" fxLayoutAlign="space-between start">
+    <mat-card-title>{{launch.mission_name}}</mat-card-title>
+    <mat-card-subtitle>{{launch.launch_date_utc | date}}</mat-card-subtitle>
+    <mat-icon [matTooltip]="launch.launch_success ? 'Launch success' : 'Launch failure'"
+              [ngClass]="{'mat-icon--warning': !launch.launch_success, 'mat-icon--success': launch.launch_success}">
+      {{launch.launch_success ? 'check' : 'warning'}}
+    </mat-icon>
   </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <img *ngIf="launch.links.mission_patch_small as missionPatchSmall" mat-card-image [src]="missionPatchSmall"
+       [alt]="launch.mission_name">
   <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
+    <p>{{launch.details}}</p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button>LIKE</button>
