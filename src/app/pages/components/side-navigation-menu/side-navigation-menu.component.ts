@@ -1,5 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {MenuItem} from "../../../models/navigation-menu/menu-item.model";
+import {RoutesNames} from "../../../models/routing/routes-names.enum";
 
 @Component({
   selector: 'spx-side-navigation-menu',
@@ -14,11 +15,11 @@ export class SideNavigationMenuComponent implements OnInit {
       subitems: [
         {
           title: 'All Launches',
-          routerLink: ['/launches']
+          routerLink: [`/${RoutesNames.Launches}`]
         },
         {
           title: 'Next Launch',
-          routerLink: ['/launches/next']
+          routerLink: [`/${RoutesNames.Launches}/${RoutesNames.NextLaunch}`]
         }
       ]
     }
