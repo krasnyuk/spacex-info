@@ -1,0 +1,9 @@
+@import "../../../styles/variables";
+
+.navigation-menu-panel {
+  &__link {
+    &--active {
+      color: $theme-accent;
+    }
+  }
+}

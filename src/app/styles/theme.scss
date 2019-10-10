@@ -15,7 +15,7 @@
 
 
 // Create the theme object (a Sass map containing all of the palettes).
-$spacex-info-theme: mat-dark-theme($color-primary, $color-accent, $color-warn);
+$spacex-info-theme: mat-dark-theme($palette-primary, $palette-accent, $palette-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component

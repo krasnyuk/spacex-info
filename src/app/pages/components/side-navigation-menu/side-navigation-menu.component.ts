@@ -14,7 +14,11 @@ export class SideNavigationMenuComponent implements OnInit {
       subitems: [
         {
           title: 'All Launches',
-          routerLink: ['launches']
+          routerLink: ['/launches']
+        },
+        {
+          title: 'Next Launch',
+          routerLink: ['/launches/next']
         }
       ]
     }
