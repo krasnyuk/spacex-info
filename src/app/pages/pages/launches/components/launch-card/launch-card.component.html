@@ -7,13 +7,13 @@
       {{launch.launch_success ? 'check' : 'warning'}}
     </mat-icon>
   </mat-card-header>
-  <img *ngIf="launch.links.mission_patch_small as missionPatchSmall" mat-card-image [src]="missionPatchSmall"
-       [alt]="launch.mission_name">
-  <mat-card-content>
-    <p>{{launch.details}}</p>
+  <div *ngIf="launch.links.mission_patch_small as missionPatchSmall" fxLayout="row" fxLayoutAlign="center">
+    <img class="launch__mission-image" mat-card-image [src]="missionPatchSmall" [alt]="launch.mission_name">
+  </div>
+  <mat-card-content class="launch__content">
+    <p class="mat-body launch__description">{{launch.details || 'No details available'}}</p>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+  <mat-card-actions fxLayout="row" fxLayoutAlign="center">
+    <button color="accent" mat-stroked-button>Details</button>
   </mat-card-actions>
 </mat-card>

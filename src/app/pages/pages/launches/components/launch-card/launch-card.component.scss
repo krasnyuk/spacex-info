@@ -6,4 +6,14 @@
   &:hover {
     @include mat-elevation(6);
   }
+
+  &__mission-image {
+    width: 70%;
+  }
+
+  &__description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
