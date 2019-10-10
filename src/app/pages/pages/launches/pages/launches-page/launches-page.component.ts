@@ -1,17 +1,24 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import {Observable, of} from "rxjs";
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {Observable} from "rxjs";
+import {SpacexDataService} from "../../../../../core/services/spacex-data.service";
+import {Launch} from "../../../../../models/launches/launch.model";
+import {listAnimation} from "../../../../../core/animations/list.animation";
 
 @Component({
-  selector: 'spx-launches',
+  selector: 'spx-launches-page',
   templateUrl: './launches-page.component.html',
   styleUrls: ['./launches-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: listAnimation
 })
 export class LaunchesPageComponent implements OnInit {
-  launches$: Observable<Array<any>> = of([1, 2, 3, 5, 5, 6]);
-  constructor() { }
+  launches$: Observable<Array<Launch>>;
+
+  constructor(private spacexDataService: SpacexDataService) {
+  }
 
   ngOnInit() {
+    this.launches$ = this.spacexDataService.getLaunches();
   }
 
 }

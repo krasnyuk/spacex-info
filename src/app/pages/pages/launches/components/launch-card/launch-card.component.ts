@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {Launch} from "../../../../../models/launches/launch.model";
 
 @Component({
   selector: 'spx-launch-card',
@@ -7,8 +8,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LaunchCardComponent implements OnInit {
+  @Input() launch: Launch;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
