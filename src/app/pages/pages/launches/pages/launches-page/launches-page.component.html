@@ -1,5 +1,9 @@
+<mat-paginator class="paginator" [length]="launchesTotalCount$ | async"
+               [pageSize]="defaultPageSize"
+               [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"></mat-paginator>
+
 <div *ngIf="launches$ | async as launchesList" @listAnimation fxLayout="row wrap" fxLayoutAlign="start start"
      fxLayoutGap="1%">
-  <spx-launch-card *ngFor="let launch of launchesList" [launch]="launch" @listItemAnimation class="launch-card"
+  <spx-launch-card *ngFor="let launch of launchesList; trackBy: trackById" [launch]="launch" @listItemAnimation class="launch-card"
                    fxFlex="24"></spx-launch-card>
 </div>

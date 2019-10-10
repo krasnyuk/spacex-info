@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { LaunchesRoutingModule } from './launches-routing.module';
-import { LaunchesPageComponent } from './pages/launches-page/launches-page.component';
-import {MatButtonModule, MatCardModule, MatIconModule, MatTooltipModule} from "@angular/material";
-import { LaunchCardComponent } from './components/launch-card/launch-card.component';
-import {FlexLayoutModule} from "@angular/flex-layout";
+import {LaunchesRoutingModule} from './launches-routing.module';
+import {LaunchesPageComponent} from './pages/launches-page/launches-page.component';
+import {MatButtonModule, MatCardModule, MatIconModule, MatPaginatorModule, MatTooltipModule} from "@angular/material";
+import {LaunchCardComponent} from './components/launch-card/launch-card.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     FlexLayoutModule,
     MatButtonModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatPaginatorModule
   ]
 })
 export class LaunchesModule { }

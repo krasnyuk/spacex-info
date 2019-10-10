@@ -14,6 +14,6 @@
     <p class="mat-body text-truncate">{{launch.details || 'No details available'}}</p>
   </mat-card-content>
   <mat-card-actions fxLayout="row" fxLayoutAlign="center">
-    <button color="accent" mat-stroked-button>Details</button>
+    <button [routerLink]="[launch.flight_number]" color="accent" mat-stroked-button>Details</button>
   </mat-card-actions>
 </mat-card>

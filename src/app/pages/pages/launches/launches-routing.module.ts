@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
 import {LaunchesPageComponent} from './pages/launches-page/launches-page.component';
 import {RoutesNames} from "../../../models/routing/routes-names.enum";
@@ -13,7 +13,12 @@ const routes: Routes = [
   {
     path: RoutesNames.NextLaunch,
     loadChildren: () => import('./pages/next-launch-page/next-launch-page.module').then(m => m.NextLaunchPageModule)
-  }];
+  },
+  {
+    path: RoutesNames.LaunchDetails,
+    loadChildren: () => import('./pages/launch-details-page/launch-details-page.module').then(m => m.LaunchDetailsPageModule)
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

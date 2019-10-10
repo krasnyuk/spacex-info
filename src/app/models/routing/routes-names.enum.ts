@@ -1,4 +1,5 @@
 export enum RoutesNames {
   Launches = 'launches',
-  NextLaunch = 'next'
+  NextLaunch = 'next',
+  LaunchDetails = ':launchFlightNumber'
 }
