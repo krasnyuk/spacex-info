@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {PageLayoutComponent} from "./components/page-layout/page-layout.component";
+import {PageLayoutComponent} from "./pages/page-layout/page-layout.component";
 
 
 const routes: Routes = [
@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: 'launches',
-        loadChildren: () => import('./child-modules/launches/launches.module').then(m => m.LaunchesModule)
+        loadChildren: () => import('./pages/launches/launches.module').then(m => m.LaunchesModule)
       }
     ]
   }
