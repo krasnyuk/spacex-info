@@ -118,9 +118,15 @@ THE SOFTWARE.
 
 @angular/material/expansion
 
+@angular/material/form-field
+
 @angular/material/icon
 
 @angular/material/list
+
+@angular/material/paginator
+
+@angular/material/select
 
 @angular/material/sidenav
 
