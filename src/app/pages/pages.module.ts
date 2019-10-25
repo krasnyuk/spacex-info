@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
 import {PagesRoutingModule} from './pages-routing.module';
-import {PageLayoutComponent} from './pages/page-layout/page-layout.component';
+import {SideNavWrapperPageComponent} from './pages/side-nav-wrapper-page/side-nav-wrapper-page.component';
 import {
   MatButtonModule,
   MatExpansionModule,
@@ -17,7 +17,7 @@ import {SideNavigationMenuComponent} from './components/side-navigation-menu/sid
 
 
 @NgModule({
-  declarations: [PageLayoutComponent, HeaderComponent, SideNavigationMenuComponent],
+  declarations: [SideNavWrapperPageComponent, HeaderComponent, SideNavigationMenuComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

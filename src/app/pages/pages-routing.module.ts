@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {PageLayoutComponent} from "./pages/page-layout/page-layout.component";
+import {SideNavWrapperPageComponent} from "./pages/side-nav-wrapper-page/side-nav-wrapper-page.component";
 import {RoutesNames} from "../models/routing/routes-names.enum";
 
 
 const routes: Routes = [
   {
     path: '',
-    component: PageLayoutComponent,
+    component: SideNavWrapperPageComponent,
     children: [
       {
         path: '',

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageLayoutComponent } from './page-layout.component';
+import { SideNavWrapperPageComponent } from './side-nav-wrapper-page.component';
 
-describe('PageLayoutComponent', () => {
-  let component: PageLayoutComponent;
-  let fixture: ComponentFixture<PageLayoutComponent>;
+describe('SideNavWrapperPageComponent', () => {
+  let component: SideNavWrapperPageComponent;
+  let fixture: ComponentFixture<SideNavWrapperPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageLayoutComponent ]
+      declarations: [ SideNavWrapperPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageLayoutComponent);
+    fixture = TestBed.createComponent(SideNavWrapperPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
