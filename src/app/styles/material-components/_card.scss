@@ -1,0 +1,7 @@
+.mat-card {
+  &.launch {
+    .mat-card-header-text {
+      max-width: 70%;
+    }
+  }
+}
