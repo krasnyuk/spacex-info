@@ -17,8 +17,9 @@ export class SpacexDataService {
   }
 
   public getLaunches(pageIndex: number, pageSize: number): Observable<ListResponse<Launch>> {
+    const offset: number = pageIndex * pageSize;
     const params = {
-      offset: pageIndex.toString(),
+      offset: offset.toString(),
       limit: pageSize.toString()
     };
     return this.httpClient.get<Array<Launch>>(this.apiUrl + ApiEndpoints.Launches, {params, observe: 'response'}).pipe(

@@ -8,6 +8,7 @@ $header-height: 64px;
     margin-top: $header-height;
     padding: $content-padding;
     overflow-y: auto;
+    overflow-x: hidden;
     max-height: calc(100% - #{$header-height} - (#{$content-padding} * 2));
   }
 
