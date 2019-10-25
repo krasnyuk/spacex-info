@@ -1,9 +1,11 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {SpacexDataService} from "../../../../../core/services/spacex-data.service";
 import {Launch} from "../../../../../models/launches/launch.model";
 import {listAnimation} from "../../../../../core/animations/list.animation";
 import {PageEvent} from "@angular/material";
+import {map} from "rxjs/operators";
+import {ListResponse} from "../../../../../models/api/response/list.response";
 
 @Component({
   selector: 'spx-launches-page',
@@ -23,20 +25,16 @@ export class LaunchesPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getLaunchesTotalCount();
     this.getLaunchesInitial();
   }
 
   private getLaunchesInitial() {
-    this.launches$ = this.spacexDataService.getLaunches(this.defaultPageIndex, this.defaultPageSize);
-  }
-
-  private getLaunchesTotalCount() {
-    this.launchesTotalCount$ = this.spacexDataService.getLaunchesTotalCount();
+    this.launches$ = this.spacexDataService.getLaunches(this.defaultPageIndex, this.defaultPageSize).pipe(
+      map((launches: ListResponse<Launch>) => launches.items)
+    );
   }
 
   onPageChange(page: PageEvent): void {
-    this.launches$ = this.spacexDataService.getLaunches(page.pageIndex, page.pageSize);
   }
 
   trackById(index: number, item: Launch) {
