@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
-import {SpacexDataService} from "../../../../../core/services/spacex-data.service";
 import {Launch} from "../../../../../models/launches/launch.model";
 import {listAnimation} from "../../../../../core/animations/list.animation";
 import {PageEvent} from "@angular/material";
-import {map} from "rxjs/operators";
-import {ListResponse} from "../../../../../models/api/response/list.response";
+import {Select, Store} from "@ngxs/store";
+import {LaunchesState} from "../../state/launches.state";
+import {LoadLaunches, SetLaunchesPageIndex, SetLaunchesPageSize} from "../../state/launches.actions";
 
 @Component({
   selector: 'spx-launches-page',
@@ -15,26 +15,31 @@ import {ListResponse} from "../../../../../models/api/response/list.response";
   animations: listAnimation
 })
 export class LaunchesPageComponent implements OnInit {
-  launches$: Observable<Array<Launch>>;
-  launchesTotalCount$: Observable<number>;
   readonly pageSizeOptions: Array<number> = [5, 10, 25, 100];
-  readonly defaultPageSize: number = 10;
-  readonly defaultPageIndex: number = 0;
+  
+  @Select(LaunchesState.launches) launches$: Observable<Array<Launch>>;
+  @Select(LaunchesState.allLaunchesTotal) launchesTotal$: Observable<number>;
+  @Select(LaunchesState.loading) launchesLoading$: Observable<boolean>;
+  @Select(LaunchesState.pageIndex) pageIndex$: Observable<number>;
+  @Select(LaunchesState.pageSize) pageSize$: Observable<number>;
 
-  constructor(private spacexDataService: SpacexDataService) {
+  constructor(private store: Store) {
   }
 
   ngOnInit() {
-    this.getLaunchesInitial();
+    this.loadLaunchesInitial();
   }
 
-  private getLaunchesInitial() {
-    this.launches$ = this.spacexDataService.getLaunches(this.defaultPageIndex, this.defaultPageSize).pipe(
-      map((launches: ListResponse<Launch>) => launches.items)
-    );
+  private loadLaunchesInitial() {
+    this.store.dispatch(new LoadLaunches());
   }
 
   onPageChange(page: PageEvent): void {
+    this.store.dispatch([
+      new SetLaunchesPageSize(page.pageSize),
+      new SetLaunchesPageIndex(page.pageIndex),
+      new LoadLaunches()
+    ]);
   }
 
   trackById(index: number, item: Launch) {

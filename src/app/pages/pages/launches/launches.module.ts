@@ -6,12 +6,17 @@ import {LaunchesPageComponent} from './pages/launches-page/launches-page.compone
 import {MatButtonModule, MatCardModule, MatIconModule, MatPaginatorModule, MatTooltipModule} from "@angular/material";
 import {LaunchCardComponent} from './components/launch-card/launch-card.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {NgxsModule} from "@ngxs/store";
+import {LaunchesState} from "./state/launches.state";
 
 
 @NgModule({
   declarations: [LaunchesPageComponent, LaunchCardComponent],
   imports: [
     CommonModule,
+    NgxsModule.forFeature([
+      LaunchesState
+    ]),
     LaunchesRoutingModule,
     MatCardModule,
     FlexLayoutModule,
