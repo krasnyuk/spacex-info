@@ -1,8 +1,9 @@
 <mat-paginator class="paginator" [length]="launchesTotal$ | async"
                [pageSize]="pageSize$ | async" [pageIndex]="pageIndex$ | async"
-               [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"></mat-paginator>
+               [pageSizeOptions]="pageSizeOptions" showFirstLastButtons (page)="onPageChange($event)"></mat-paginator>
 
-<div *ngIf="(launches$ | async).length > 0" @listAnimation fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="1%">
-  <spx-launch-card *ngFor="let launch of launches$ | async; trackBy: trackById" [launch]="launch" @listItemAnimation
-                   class="launch-card" fxFlex="24"></spx-launch-card>
+<div *ngIf="(launches$ | async).length > 0" @listAnimation fxLayout="row wrap" fxLayoutAlign="start start"
+     fxLayoutGap="1%">
+  <spx-launch-card *ngFor="let launch of launches$ | async; trackBy: trackById" [launch]="launch"
+                   @listItemEnterAnimation class="launch-card" fxFlex="24"></spx-launch-card>
 </div>
