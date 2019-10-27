@@ -1,10 +1,17 @@
 import {Action, Selector, State, StateContext} from '@ngxs/store';
-import {LoadLaunches, SetLaunchesPageIndex, SetLaunchesPageSize} from './launches.actions';
+import {
+  LoadLaunches,
+  SetLaunchesOrderBy,
+  SetLaunchesPageIndex,
+  SetLaunchesPageSize,
+  SetLaunchesSortByField
+} from './launches.actions';
 import {Launch} from "../../../../models/launches/launch.model";
 import {ListWithPagingStateModel} from "../../../../models/state/list.state";
 import {SpacexDataService} from "../../../../core/services/spacex-data.service";
 import {tap} from "rxjs/operators";
 import {ListResponse} from "../../../../models/api/response/list.response";
+import {OrderBy} from "../../../../models/api/order-by.enum";
 
 export interface LaunchesStateModel extends ListWithPagingStateModel<Launch> {
 }
@@ -15,6 +22,18 @@ const initialState: LaunchesStateModel = {
   pageIndex: 0,
   pageSize: 5,
   total: 0,
+  orderBy: OrderBy.DESC,
+  sortByField: 'launch_date_utc',
+  sortByFieldList: [
+    {
+      key: 'flight_number',
+      value: 'Flight Number',
+    },
+    {
+      key: 'launch_date_utc',
+      value: 'Launch Date',
+    }
+  ],
 };
 
 @State<LaunchesStateModel>({
@@ -48,14 +67,29 @@ export class LaunchesState {
     return state.pageSize;
   }
 
+  @Selector()
+  static sortByFieldList(state: LaunchesStateModel) {
+    return state.sortByFieldList;
+  }
+
+  @Selector()
+  static sortByField(state: LaunchesStateModel) {
+    return state.sortByField;
+  }
+
+  @Selector()
+  static orderBy(state: LaunchesStateModel) {
+    return state.orderBy;
+  }
+
   constructor(private spacexDataService: SpacexDataService) {
   }
 
   @Action(LoadLaunches)
   LoadLaunches(ctx: StateContext<LaunchesStateModel>) {
     ctx.patchState({loading: true});
-    const {pageIndex, pageSize} = ctx.getState();
-    return this.spacexDataService.getLaunches(pageIndex, pageSize).pipe(
+    const {pageIndex, pageSize, orderBy, sortByField} = ctx.getState();
+    return this.spacexDataService.getLaunches(pageIndex, pageSize, sortByField, orderBy).pipe(
       tap((response: ListResponse<Launch>) => ctx.patchState({
         loading: false,
         items: response.items,
@@ -72,5 +106,15 @@ export class LaunchesState {
   @Action(SetLaunchesPageSize)
   SetLaunchesPageSize(ctx: StateContext<LaunchesStateModel>, action: SetLaunchesPageSize) {
     ctx.patchState({pageSize: action.pageSize});
+  }
+
+  @Action(SetLaunchesOrderBy)
+  SetLaunchesOrderBy(ctx: StateContext<LaunchesStateModel>, action: SetLaunchesOrderBy) {
+    ctx.patchState({orderBy: action.orderBy});
+  }
+
+  @Action(SetLaunchesSortByField)
+  SetLaunchesSortByField(ctx: StateContext<LaunchesStateModel>, action: SetLaunchesSortByField) {
+    ctx.patchState({sortByField: action.fieldName});
   }
 }

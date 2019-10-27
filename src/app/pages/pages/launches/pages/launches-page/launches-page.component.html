@@ -1,8 +1,16 @@
-<spx-list-filter class="list-filter" [listLength]="launchesTotal$ | async" [pageSize]="pageSize$ | async"
-                 [pageIndex]="pageIndex$ | async" (pageChange)="onPageChange($event)"></spx-list-filter>
+<spx-list-filter class="list-filter"
+                 [sortByFieldList]="sortByFieldList$ | async"
+                 [listLength]="launchesTotal$ | async"
+                 [pageSize]="pageSize$ | async"
+                 [pageIndex]="pageIndex$ | async"
+                 [sortByField]="sortByField$ | async"
+                 [orderBy]="orderBy$ | async"
+                 (pageChange)="onPageChange($event)"
+                 (orderByChange)="onOrderByChange($event)"
+                 (sortByFieldChange)="onSortByChange($event)"></spx-list-filter>
 
-<div *ngIf="(launches$ | async).length > 0" @listAnimation fxLayout="row wrap" fxLayoutAlign="start start"
-     fxLayoutGap="1%">
-  <spx-launch-card *ngFor="let launch of launches$ | async; trackBy: trackById" [launch]="launch"
-                   @listItemEnterAnimation class="launch-card" fxFlex="24"></spx-launch-card>
+<div *ngIf="(launches$ | async).length > 0" @listAnimation fxLayout="row wrap" fxLayoutAlign="start start">
+  <spx-launch-card *ngFor="let launch of launches$ | async; trackBy: trackById"
+                   [launch]="launch"
+                   @listItemEnterAnimation class="launch-card" fxFlex="25"></spx-launch-card>
 </div>

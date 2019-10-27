@@ -1,4 +1,26 @@
-<mat-paginator class="paginator" [length]="listLength"
-               [pageSize]="pageSize" [pageIndex]="pageIndex"
-               [pageSizeOptions]="pageSizeOptions" showFirstLastButtons
-               (page)="pageChange.emit($event)"></mat-paginator>
+<mat-card fxLayout="row" fxLayoutAlign="space-between">
+  <form fxLayout="row" fxLayoutGap="10px">
+    <mat-form-field>
+      <mat-label>Sort By</mat-label>
+      <mat-select [formControl]="sortByFieldControl">
+        <mat-option *ngFor="let item of sortByFieldList" [value]="item.key">
+          {{item.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Order By</mat-label>
+      <mat-select [formControl]="orderByControl">
+        <mat-option *ngFor="let item of orderByList" [value]="item.key">
+          {{item.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <mat-paginator class="list-filter-paginator" [length]="listLength"
+                 [pageSize]="pageSize" [pageIndex]="pageIndex"
+                 [pageSizeOptions]="pageSizeOptions" showFirstLastButtons
+                 (page)="pageChange.emit($event)"></mat-paginator>
+</mat-card>

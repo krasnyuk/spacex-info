@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListFilterComponent } from './list-filter/list-filter.component';
-import {MatPaginatorModule, MatSelectModule} from "@angular/material";
+import {MatCardModule, MatPaginatorModule, MatSelectModule} from "@angular/material";
+import {FlexModule} from "@angular/flex-layout";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -10,7 +12,11 @@ import {MatPaginatorModule, MatSelectModule} from "@angular/material";
   imports: [
     CommonModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    FlexModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCardModule
   ],
   exports: [ListFilterComponent]
 })

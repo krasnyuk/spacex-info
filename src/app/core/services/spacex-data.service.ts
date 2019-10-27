@@ -6,6 +6,7 @@ import {map} from "rxjs/operators";
 import {ListResponse} from "../../models/api/response/list.response";
 import {ApiEndpoints} from "../../models/api/api-endpoints";
 import {ApiUtils} from "../utils/api.utils";
+import {OrderBy} from "../../models/api/order-by.enum";
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,13 @@ export class SpacexDataService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public getLaunches(pageIndex: number, pageSize: number): Observable<ListResponse<Launch>> {
+  public getLaunches(pageIndex: number, pageSize: number, sortByField: string, order: OrderBy): Observable<ListResponse<Launch>> {
     const offset: number = pageIndex * pageSize;
     const params = {
       offset: offset.toString(),
-      limit: pageSize.toString()
+      limit: pageSize.toString(),
+      sort: sortByField,
+      order
     };
     return this.httpClient.get<Array<Launch>>(this.apiUrl + ApiEndpoints.Launches, {params, observe: 'response'}).pipe(
       map((response: HttpResponse<Array<Launch>>) => ApiUtils.extractTotalFromListResponse<Launch>(response))
