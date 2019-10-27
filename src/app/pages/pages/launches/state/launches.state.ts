@@ -1,6 +1,6 @@
 import {Action, Selector, State, StateContext} from '@ngxs/store';
 import {
-  LoadLaunches,
+  LoadLaunches, SetLaunchesIsSuccessfulFilter,
   SetLaunchesOrderBy,
   SetLaunchesPageIndex,
   SetLaunchesPageSize,
@@ -14,6 +14,7 @@ import {ListResponse} from "../../../../models/api/response/list.response";
 import {OrderBy} from "../../../../models/api/order-by.enum";
 
 export interface LaunchesStateModel extends ListWithPagingStateModel<Launch> {
+  isSuccessfulFilter: boolean;
 }
 
 const initialState: LaunchesStateModel = {
@@ -34,6 +35,7 @@ const initialState: LaunchesStateModel = {
       value: 'Launch Date',
     }
   ],
+  isSuccessfulFilter: true
 };
 
 @State<LaunchesStateModel>({
@@ -82,14 +84,22 @@ export class LaunchesState {
     return state.orderBy;
   }
 
+  @Selector()
+  static isSuccessfulFilter(state: LaunchesStateModel) {
+    return state.isSuccessfulFilter;
+  }
+
   constructor(private spacexDataService: SpacexDataService) {
   }
 
   @Action(LoadLaunches)
   LoadLaunches(ctx: StateContext<LaunchesStateModel>) {
     ctx.patchState({loading: true});
-    const {pageIndex, pageSize, orderBy, sortByField} = ctx.getState();
-    return this.spacexDataService.getLaunches(pageIndex, pageSize, sortByField, orderBy).pipe(
+    const {pageIndex, pageSize, orderBy, sortByField, isSuccessfulFilter} = ctx.getState();
+    const additionalFilters = {
+      launch_success: isSuccessfulFilter
+    };
+    return this.spacexDataService.getLaunches(pageIndex, pageSize, sortByField, orderBy, additionalFilters).pipe(
       tap((response: ListResponse<Launch>) => ctx.patchState({
         loading: false,
         items: response.items,
@@ -116,5 +126,10 @@ export class LaunchesState {
   @Action(SetLaunchesSortByField)
   SetLaunchesSortByField(ctx: StateContext<LaunchesStateModel>, action: SetLaunchesSortByField) {
     ctx.patchState({sortByField: action.fieldName});
+  }
+
+  @Action(SetLaunchesIsSuccessfulFilter)
+  SetLaunchesIsSuccessfulFilter(ctx: StateContext<LaunchesStateModel>, action: SetLaunchesIsSuccessfulFilter) {
+    ctx.patchState({isSuccessfulFilter: action.isSuccessful});
   }
 }

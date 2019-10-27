@@ -8,7 +8,9 @@
                  (pageChange)="onPageChange($event)"
                  (orderByChange)="onOrderByChange($event)"
                  (sortByFieldChange)="onSortByChange($event)">
-  <mat-checkbox>Launch Successful</mat-checkbox>
+  <mat-checkbox [checked]="isSuccessfulFilter$ | async" (change)="onLaunchIsSuccessfulChange($event)">
+    Launch Successful
+  </mat-checkbox>
 </spx-list-filter>
 
 <div *ngIf="(launches$ | async).length > 0" @listAnimation fxLayout="row wrap" fxLayoutAlign="start start">

@@ -17,13 +17,18 @@ export class SpacexDataService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public getLaunches(pageIndex: number, pageSize: number, sortByField: string, order: OrderBy): Observable<ListResponse<Launch>> {
+  public getLaunches(pageIndex: number,
+                     pageSize: number,
+                     sortByField: string,
+                     order: OrderBy,
+                     filters: { [key: string]: string | boolean } = {}): Observable<ListResponse<Launch>> {
     const offset: number = pageIndex * pageSize;
     const params = {
       offset: offset.toString(),
       limit: pageSize.toString(),
       sort: sortByField,
-      order
+      order,
+      ...filters
     };
     return this.httpClient.get<Array<Launch>>(this.apiUrl + ApiEndpoints.Launches, {params, observe: 'response'}).pipe(
       map((response: HttpResponse<Array<Launch>>) => ApiUtils.extractTotalFromListResponse<Launch>(response))

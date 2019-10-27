@@ -32,3 +32,10 @@ export class SetLaunchesOrderBy {
   }
 }
 
+export class SetLaunchesIsSuccessfulFilter {
+  static readonly type = '[Launches] Set Launches Is Successful Filter';
+
+  constructor(public isSuccessful: boolean) {
+  }
+}
+

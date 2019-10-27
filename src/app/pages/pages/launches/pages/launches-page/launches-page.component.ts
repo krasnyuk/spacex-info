@@ -2,11 +2,11 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Launch} from "../../../../../models/launches/launch.model";
 import {listAnimation} from "../../../../../core/animations/list.animation";
-import {PageEvent} from "@angular/material";
+import {MatCheckboxChange, PageEvent} from "@angular/material";
 import {Select, Store} from "@ngxs/store";
 import {LaunchesState} from "../../state/launches.state";
 import {
-  LoadLaunches,
+  LoadLaunches, SetLaunchesIsSuccessfulFilter,
   SetLaunchesOrderBy,
   SetLaunchesPageIndex,
   SetLaunchesPageSize,
@@ -32,12 +32,20 @@ export class LaunchesPageComponent implements OnInit {
   @Select(LaunchesState.orderBy) orderBy$: Observable<OrderBy>;
   @Select(LaunchesState.sortByFieldList) sortByFieldList$: Observable<Array<KeyValue<string, string>>>;
   @Select(LaunchesState.sortByField) sortByField$: Observable<string>;
+  @Select(LaunchesState.isSuccessfulFilter) isSuccessfulFilter$: Observable<boolean>;
 
   constructor(private store: Store) {
   }
 
   ngOnInit() {
     this.loadLaunchesInitial();
+  }
+
+  onLaunchIsSuccessfulChange(event: MatCheckboxChange): void {
+    this.store.dispatch([
+      new SetLaunchesIsSuccessfulFilter(event.checked),
+      new LoadLaunches()
+    ]);
   }
 
   onSortByChange(fieldName: string): void {
