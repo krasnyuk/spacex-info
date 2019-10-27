@@ -1,5 +1,11 @@
-<mat-card fxLayout="row" fxLayoutAlign="space-between">
-  <form fxLayout="row" fxLayoutGap="10px">
+<mat-expansion-panel expanded>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Filters
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center">
     <mat-form-field>
       <mat-label>Sort By</mat-label>
       <mat-select [formControl]="sortByFieldControl">
@@ -17,10 +23,12 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-  </form>
+
+    <ng-content></ng-content>
+  </div>
 
   <mat-paginator class="list-filter-paginator" [length]="listLength"
                  [pageSize]="pageSize" [pageIndex]="pageIndex"
                  [pageSizeOptions]="pageSizeOptions" showFirstLastButtons
                  (page)="pageChange.emit($event)"></mat-paginator>
-</mat-card>
+</mat-expansion-panel>
