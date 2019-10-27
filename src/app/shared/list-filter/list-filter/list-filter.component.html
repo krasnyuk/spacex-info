@@ -1,7 +1,14 @@
 <mat-expansion-panel expanded>
   <mat-expansion-panel-header>
-    <mat-panel-title>
-      Filters
+    <mat-panel-title fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+        <mat-icon>filter_list</mat-icon>
+        <span>Filters</span>
+      </div>
+      <mat-paginator spxStopPropagationOnClick class="list-filter-paginator" [length]="listLength"
+                     [pageSize]="pageSize" [pageIndex]="pageIndex"
+                     [pageSizeOptions]="pageSizeOptions" showFirstLastButtons
+                     (page)="pageChange.emit($event)"></mat-paginator>
     </mat-panel-title>
   </mat-expansion-panel-header>
 
@@ -26,9 +33,4 @@
 
     <ng-content></ng-content>
   </div>
-
-  <mat-paginator class="list-filter-paginator" [length]="listLength"
-                 [pageSize]="pageSize" [pageIndex]="pageIndex"
-                 [pageSizeOptions]="pageSizeOptions" showFirstLastButtons
-                 (page)="pageChange.emit($event)"></mat-paginator>
 </mat-expansion-panel>
