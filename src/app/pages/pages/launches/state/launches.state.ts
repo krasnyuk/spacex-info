@@ -61,7 +61,7 @@ export class LaunchesState {
         items: response.items,
         total: response.total
       }))
-    )
+    );
   }
 
   @Action(SetLaunchesPageIndex)

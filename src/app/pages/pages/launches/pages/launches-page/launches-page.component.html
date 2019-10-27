@@ -1,6 +1,5 @@
-<mat-paginator class="paginator" [length]="launchesTotal$ | async"
-               [pageSize]="pageSize$ | async" [pageIndex]="pageIndex$ | async"
-               [pageSizeOptions]="pageSizeOptions" showFirstLastButtons (page)="onPageChange($event)"></mat-paginator>
+<spx-list-filter class="list-filter" [listLength]="launchesTotal$ | async" [pageSize]="pageSize$ | async"
+                 [pageIndex]="pageIndex$ | async" (pageChange)="onPageChange($event)"></spx-list-filter>
 
 <div *ngIf="(launches$ | async).length > 0" @listAnimation fxLayout="row wrap" fxLayoutAlign="start start"
      fxLayoutGap="1%">

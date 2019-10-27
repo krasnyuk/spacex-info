@@ -11,7 +11,6 @@ import {
   MatToolbarModule
 } from "@angular/material";
 import {HeaderComponent} from './components/header/header.component';
-import {SharedModule} from "../shared/shared.module";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {SideNavigationMenuComponent} from './components/side-navigation-menu/side-navigation-menu.component';
 
@@ -23,7 +22,6 @@ import {SideNavigationMenuComponent} from './components/side-navigation-menu/sid
     PagesRoutingModule,
     MatToolbarModule,
     MatSidenavModule,
-    SharedModule,
     FlexLayoutModule,
     MatExpansionModule,
     MatListModule,

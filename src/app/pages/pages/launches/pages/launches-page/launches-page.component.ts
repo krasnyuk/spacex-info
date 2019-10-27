@@ -15,7 +15,7 @@ import {LoadLaunches, SetLaunchesPageIndex, SetLaunchesPageSize} from "../../sta
   animations: listAnimation
 })
 export class LaunchesPageComponent implements OnInit {
-  readonly pageSizeOptions: Array<number> = [5, 10, 25, 100];
+
 
   @Select(LaunchesState.launches) launches$: Observable<Array<Launch>>;
   @Select(LaunchesState.allLaunchesTotal) launchesTotal$: Observable<number>;

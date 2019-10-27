@@ -3,11 +3,12 @@ import {CommonModule} from '@angular/common';
 
 import {LaunchesRoutingModule} from './launches-routing.module';
 import {LaunchesPageComponent} from './pages/launches-page/launches-page.component';
-import {MatButtonModule, MatCardModule, MatIconModule, MatPaginatorModule, MatTooltipModule} from "@angular/material";
+import {MatButtonModule, MatCardModule, MatIconModule, MatTooltipModule} from "@angular/material";
 import {LaunchCardComponent} from './components/launch-card/launch-card.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgxsModule} from "@ngxs/store";
 import {LaunchesState} from "./state/launches.state";
+import {ListFilterModule} from "../../../shared/list-filter/list-filter.module";
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import {LaunchesState} from "./state/launches.state";
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    MatPaginatorModule
+    ListFilterModule
   ]
 })
 export class LaunchesModule { }
