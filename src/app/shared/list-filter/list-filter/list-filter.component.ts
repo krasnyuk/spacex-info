@@ -16,14 +16,14 @@ export class ListFilterComponent extends BaseUnsubscribe implements OnInit {
   readonly orderByControl: FormControl = new FormControl(null);
   readonly sortByFieldControl: FormControl = new FormControl(null);
   readonly pageSizeOptions: Array<number> = [5, 10, 25, 100];
-  readonly orderByList: Array<KeyValue<OrderBy, string>> = [
+  readonly orderByList: Array<KeyValue<string, OrderBy>> = [
     {
-      key: OrderBy.ASC,
-      value: 'ASC'
+      value: OrderBy.ASC,
+      key: 'ASC'
     },
     {
-      key: OrderBy.DESC,
-      value: 'DESC'
+      value: OrderBy.DESC,
+      key: 'DESC'
     }
   ];
 

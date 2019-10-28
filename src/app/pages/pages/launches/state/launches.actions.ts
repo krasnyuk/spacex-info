@@ -1,4 +1,5 @@
 import {OrderBy} from "../../../../models/api/order-by.enum";
+import {BooleanFilter} from "../../../../models/api/boolean-filter.enum";
 
 export class LoadLaunches {
   static readonly type = '[Launches] Load Launches';
@@ -35,7 +36,7 @@ export class SetLaunchesOrderBy {
 export class SetLaunchesIsSuccessfulFilter {
   static readonly type = '[Launches] Set Launches Is Successful Filter';
 
-  constructor(public isSuccessful: boolean) {
+  constructor(public isSuccessful: BooleanFilter) {
   }
 }
 

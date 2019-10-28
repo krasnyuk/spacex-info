@@ -8,9 +8,14 @@
                  (pageChange)="onPageChange($event)"
                  (orderByChange)="onOrderByChange($event)"
                  (sortByFieldChange)="onSortByChange($event)">
-  <mat-checkbox [checked]="isSuccessfulFilter$ | async" (change)="onLaunchIsSuccessfulChange($event)">
-    Launch Successful
-  </mat-checkbox>
+  <mat-form-field>
+    <mat-label>Launch Successful</mat-label>
+    <mat-select [value]="isSuccessfulFilter$ | async" (selectionChange)="onLaunchIsSuccessfulChange($event)">
+      <mat-option *ngFor="let item of isSuccessfullFilterValues" [value]="item.value">
+        {{item.key}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 </spx-list-filter>
 
 <div *ngIf="(launches$ | async).length > 0" @listAnimation fxLayout="row wrap" fxLayoutAlign="start start">

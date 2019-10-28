@@ -3,7 +3,14 @@ import {CommonModule} from '@angular/common';
 
 import {LaunchesRoutingModule} from './launches-routing.module';
 import {LaunchesPageComponent} from './pages/launches-page/launches-page.component';
-import {MatButtonModule, MatCardModule, MatCheckboxModule, MatIconModule, MatTooltipModule} from "@angular/material";
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatIconModule, MatSelectModule,
+  MatTooltipModule
+} from "@angular/material";
 import {LaunchCardComponent} from './components/launch-card/launch-card.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgxsModule} from "@ngxs/store";
@@ -25,7 +32,9 @@ import {ListFilterModule} from "../../../shared/list-filter/list-filter.module";
     MatIconModule,
     MatTooltipModule,
     ListFilterModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatSelectModule
   ]
 })
 export class LaunchesModule { }

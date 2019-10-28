@@ -1,6 +1,7 @@
 import {Action, Selector, State, StateContext} from '@ngxs/store';
 import {
-  LoadLaunches, SetLaunchesIsSuccessfulFilter,
+  LoadLaunches,
+  SetLaunchesIsSuccessfulFilter,
   SetLaunchesOrderBy,
   SetLaunchesPageIndex,
   SetLaunchesPageSize,
@@ -12,9 +13,10 @@ import {SpacexDataService} from "../../../../core/services/spacex-data.service";
 import {tap} from "rxjs/operators";
 import {ListResponse} from "../../../../models/api/response/list.response";
 import {OrderBy} from "../../../../models/api/order-by.enum";
+import {BooleanFilter} from "../../../../models/api/boolean-filter.enum";
 
 export interface LaunchesStateModel extends ListWithPagingStateModel<Launch> {
-  isSuccessfulFilter: boolean;
+  isSuccessfulFilter: BooleanFilter;
 }
 
 const initialState: LaunchesStateModel = {
@@ -27,15 +29,15 @@ const initialState: LaunchesStateModel = {
   sortByField: 'launch_date_utc',
   sortByFieldList: [
     {
-      key: 'flight_number',
-      value: 'Flight Number',
+      value: 'mission_name',
+      key: 'Mission Name',
     },
     {
-      key: 'launch_date_utc',
-      value: 'Launch Date',
+      value: 'launch_date_utc',
+      key: 'Launch Date',
     }
   ],
-  isSuccessfulFilter: true
+  isSuccessfulFilter: BooleanFilter.TRUE
 };
 
 @State<LaunchesStateModel>({
@@ -95,10 +97,8 @@ export class LaunchesState {
   @Action(LoadLaunches)
   LoadLaunches(ctx: StateContext<LaunchesStateModel>) {
     ctx.patchState({loading: true});
-    const {pageIndex, pageSize, orderBy, sortByField, isSuccessfulFilter} = ctx.getState();
-    const additionalFilters = {
-      launch_success: isSuccessfulFilter
-    };
+    const {pageIndex, pageSize, orderBy, sortByField} = ctx.getState();
+    const additionalFilters: { [key: string]: string | boolean } = this.getAdditionalFilters(ctx);
     return this.spacexDataService.getLaunches(pageIndex, pageSize, sortByField, orderBy, additionalFilters).pipe(
       tap((response: ListResponse<Launch>) => ctx.patchState({
         loading: false,
@@ -106,6 +106,15 @@ export class LaunchesState {
         total: response.total
       }))
     );
+  }
+
+  private getAdditionalFilters(ctx: StateContext<LaunchesStateModel>): { [key: string]: string | boolean } {
+    const additionalFilters = {};
+    const isSuccessfulFilter: BooleanFilter = ctx.getState().isSuccessfulFilter;
+    if (isSuccessfulFilter !== BooleanFilter.ALL) {
+      additionalFilters['launch_success'] = isSuccessfulFilter;
+    }
+    return additionalFilters;
   }
 
   @Action(SetLaunchesPageIndex)
