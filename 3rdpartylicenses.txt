@@ -114,6 +114,8 @@ THE SOFTWARE.
 
 @angular/material/card
 
+@angular/material/checkbox
+
 @angular/material/core
 
 @angular/material/expansion
@@ -138,6 +140,9 @@ THE SOFTWARE.
 MIT
 
 @angular/router
+MIT
+
+@ngxs/store
 MIT
 
 core-js
