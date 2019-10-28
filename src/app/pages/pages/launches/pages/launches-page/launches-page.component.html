@@ -5,6 +5,7 @@
                  [pageIndex]="pageIndex$ | async"
                  [sortByField]="sortByField$ | async"
                  [orderBy]="orderBy$ | async"
+                 [loading]="launchesLoading$ | async"
                  (pageChange)="onPageChange($event)"
                  (orderByChange)="onOrderByChange($event)"
                  (sortByFieldChange)="onSortByChange($event)">

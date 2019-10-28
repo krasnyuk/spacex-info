@@ -31,6 +31,7 @@ export class ListFilterComponent extends BaseUnsubscribe implements OnInit {
   @Input() pageSize: number = 0;
   @Input() pageIndex: number = 0;
   @Input() sortByFieldList: Array<KeyValue<string, string>> = [];
+  @Input() loading: boolean;
 
   @Input() set orderBy(orderBy: OrderBy) {
     this.orderByControl.setValue(orderBy);

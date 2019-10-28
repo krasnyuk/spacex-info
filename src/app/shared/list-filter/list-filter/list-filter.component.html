@@ -1,4 +1,8 @@
-<mat-expansion-panel expanded>
+<mat-expansion-panel expanded class="list-filter-panel">
+  <!-- Loader-->
+  <mat-progress-bar *ngIf="loading" class="list-filter-panel__loader" color="accent"
+                    mode="indeterminate"></mat-progress-bar>
+
   <mat-expansion-panel-header>
     <mat-panel-title fxLayout="row" fxLayoutAlign="space-between center">
       <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">

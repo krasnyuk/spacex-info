@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListFilterComponent } from './list-filter/list-filter.component';
-import {MatCardModule, MatExpansionModule, MatIconModule, MatPaginatorModule, MatSelectModule} from "@angular/material";
+import {
+  MatCardModule,
+  MatExpansionModule,
+  MatIconModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatSelectModule
+} from "@angular/material";
 import {FlexModule} from "@angular/flex-layout";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {StopPropagationOnClickModule} from "../stop-propagation-on-click/stop-propagation-on-click.module";
@@ -20,7 +27,8 @@ import {StopPropagationOnClickModule} from "../stop-propagation-on-click/stop-pr
     MatCardModule,
     MatExpansionModule,
     MatIconModule,
-    StopPropagationOnClickModule
+    StopPropagationOnClickModule,
+    MatProgressBarModule
   ],
   exports: [ListFilterComponent]
 })
