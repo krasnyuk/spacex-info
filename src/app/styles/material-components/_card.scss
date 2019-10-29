@@ -1,11 +1,16 @@
 .mat-card {
+  /* Launch card */
   &.launch {
     .mat-card-header-text {
       max-width: 70%;
     }
 
-    .mat-card-image:first-child {
-      margin-top: unset;
+    .mat-card-image {
+      border-radius: 4px;
+
+      &:first-child {
+        margin-top: unset;
+      }
     }
   }
 }
