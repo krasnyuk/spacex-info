@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/next-launch-page/next-launch-page.module').then(m => m.NextLaunchPageModule)
   },
   {
-    path: RoutesNames.LaunchDetails,
+    path: `:${RoutesNames.LaunchDetails}`,
     loadChildren: () => import('./pages/launch-details-page/launch-details-page.module').then(m => m.LaunchDetailsPageModule)
   }
 ];

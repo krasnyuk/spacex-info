@@ -1,1 +1,16 @@
-<p>launch-details-page works!</p>
+<mat-card *ngIf="launch$ | async as launch" class="example-card">
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <div fxFlex="84">
+      <mat-card-header>
+        <mat-card-title>{{launch.mission_name}}</mat-card-title>
+        <mat-card-subtitle>{{launch.launch_date_utc | date}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="mat-body">{{launch.details}}</p>
+      </mat-card-content>
+    </div>
+    <div fxFlex="15">
+      <img spxImageLoader class="img-responsive" [src]="launch.links.mission_patch_small" [alt]="launch.mission_name">
+    </div>
+  </div>
+</mat-card>
