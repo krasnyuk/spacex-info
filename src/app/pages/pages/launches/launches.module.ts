@@ -15,7 +15,7 @@ import {LaunchCardComponent} from './components/launch-card/launch-card.componen
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgxsModule} from "@ngxs/store";
 import {LaunchesState} from "./state/launches.state";
-import {ListFilterModule} from "../../../shared/list-filter/list-filter.module";
+import {ListFilterModule} from "../../../shared/modules/list-filter/list-filter.module";
 
 
 @NgModule({

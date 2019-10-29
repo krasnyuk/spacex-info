@@ -23,20 +23,10 @@ const initialState: LaunchesStateModel = {
   items: [],
   loading: false,
   pageIndex: 0,
-  pageSize: 5,
+  pageSize: 10,
   total: 0,
   orderBy: OrderBy.DESC,
   sortByField: 'launch_date_utc',
-  sortByFieldList: [
-    {
-      value: 'mission_name',
-      key: 'Mission Name',
-    },
-    {
-      value: 'launch_date_utc',
-      key: 'Launch Date',
-    }
-  ],
   isSuccessfulFilter: BooleanFilter.TRUE
 };
 
@@ -69,11 +59,6 @@ export class LaunchesState {
   @Selector()
   static pageSize(state: LaunchesStateModel) {
     return state.pageSize;
-  }
-
-  @Selector()
-  static sortByFieldList(state: LaunchesStateModel) {
-    return state.sortByFieldList;
   }
 
   @Selector()

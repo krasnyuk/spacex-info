@@ -1,5 +1,5 @@
 import {Directive, ElementRef, OnInit} from '@angular/core';
-import {BaseUnsubscribe} from '../../core/base/base-unsubscribe';
+import {BaseUnsubscribe} from '../../../core/base/base-unsubscribe';
 import {fromEvent} from 'rxjs';
 import {takeUntil, tap} from 'rxjs/operators';
 

@@ -12,5 +12,4 @@ export interface ListWithPagingStateModel<T = any> extends ListStateModel<T> {
   pageIndex: number;
   sortByField: string;
   orderBy: OrderBy;
-  sortByFieldList: Array<KeyValue<string, string>>;
 }

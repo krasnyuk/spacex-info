@@ -24,7 +24,7 @@ import {BooleanFilter} from "../../../../../models/api/boolean-filter.enum";
   animations: listAnimation
 })
 export class LaunchesPageComponent implements OnInit {
-  isSuccessfullFilterValues: Array<KeyValue<string, string>> = [
+  readonly isSuccessfullFilterValues: Array<KeyValue<string, string>> = [
     {
       key: 'All',
       value: BooleanFilter.ALL
@@ -39,13 +39,23 @@ export class LaunchesPageComponent implements OnInit {
     },
   ];
 
+  readonly sortByFieldList: Array<KeyValue<string, string>> = [
+    {
+      value: 'mission_name',
+      key: 'Mission Name',
+    },
+    {
+      value: 'launch_date_utc',
+      key: 'Launch Date',
+    }
+  ];
+
   @Select(LaunchesState.launches) launches$: Observable<Array<Launch>>;
   @Select(LaunchesState.allLaunchesTotal) launchesTotal$: Observable<number>;
   @Select(LaunchesState.loading) launchesLoading$: Observable<boolean>;
   @Select(LaunchesState.pageIndex) pageIndex$: Observable<number>;
   @Select(LaunchesState.pageSize) pageSize$: Observable<number>;
   @Select(LaunchesState.orderBy) orderBy$: Observable<OrderBy>;
-  @Select(LaunchesState.sortByFieldList) sortByFieldList$: Observable<Array<KeyValue<string, string>>>;
   @Select(LaunchesState.sortByField) sortByField$: Observable<string>;
   @Select(LaunchesState.isSuccessfulFilter) isSuccessfulFilter$: Observable<string>;
 

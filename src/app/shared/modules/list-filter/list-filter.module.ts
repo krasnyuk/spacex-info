@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ListFilterComponent } from './list-filter/list-filter.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ListFilterComponent} from './list-filter.component';
 import {
   MatCardModule,
   MatExpansionModule,
@@ -11,8 +11,7 @@ import {
 } from "@angular/material";
 import {FlexModule} from "@angular/flex-layout";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {StopPropagationOnClickModule} from "../stop-propagation-on-click/stop-propagation-on-click.module";
-
+import {SharedModule} from "../../shared.module";
 
 
 @NgModule({
@@ -27,8 +26,8 @@ import {StopPropagationOnClickModule} from "../stop-propagation-on-click/stop-pr
     MatCardModule,
     MatExpansionModule,
     MatIconModule,
-    StopPropagationOnClickModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    SharedModule
   ],
   exports: [ListFilterComponent]
 })
