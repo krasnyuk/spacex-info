@@ -1,30 +1,47 @@
-import {Directive, ElementRef, HostListener, Input, OnInit, Renderer2} from '@angular/core';
+import {Attribute, Directive, ElementRef, HostListener, Input, OnInit, Renderer2} from '@angular/core';
+import {BaseUnsubscribe} from "../../../core/base/base-unsubscribe";
+import {fromEvent} from "rxjs";
+import {take, takeUntil} from "rxjs/operators";
 
 @Directive({
   selector: '[spxImageLoader]'
 })
-export class ImageLoaderDirective implements OnInit {
+export class ImageLoaderDirective extends BaseUnsubscribe implements OnInit {
 
-  @Input() public loader: string = 'assets/images/image-placeholder.jpg';
-  @Input() public onErrorSrc: string = 'assets/images/img-not-found.jpg';
+  @Input() loadingSrc: string = 'assets/images/image-loading.gif';
+  @Input() onErrorSrc: string = 'assets/images/image-not-found.jpg';
 
-  constructor(private renderer: Renderer2, private el: ElementRef) {
+  constructor(@Attribute('src') public imageSrc: string,
+              private renderer: Renderer2,
+              private el: ElementRef) {
+    super();
   }
-
 
   ngOnInit(): void {
-    this.initHostImageLoader();
+    this.loadOriginalImage();
+    this.showLoaderImage();
+    this.onLoadError();
   }
 
-  private initHostImageLoader(): void {
-    this.renderer.setAttribute(this.el.nativeElement, 'src', this.loader);
+  private showLoaderImage() {
+    this.renderer.setAttribute(this.el.nativeElement, 'src', this.loadingSrc);
   }
 
-  @HostListener('load') onLoad() {
-    //this.renderer.setAttribute(this.el.nativeElement, 'src', this.el.nativeElement.src);
+  private loadOriginalImage() {
+    if (this.imageSrc) {
+      const image = new Image();
+      image.onload = () => this.renderer.setAttribute(this.el.nativeElement, 'src', image.src);
+      image.src = this.imageSrc;
+    }
   }
 
-  @HostListener('error') onError() {
-    this.renderer.setAttribute(this.el.nativeElement, 'src', this.onErrorSrc);
+  private onLoadError(): void {
+    fromEvent(this.el.nativeElement, 'error').pipe(
+      take(1),
+      takeUntil(this.unsubscribeOnDestroy$)
+    ).subscribe(() => {
+      const imageSrc: string = this.onErrorSrc;
+      this.renderer.setAttribute(this.el.nativeElement, 'src', imageSrc);
+    });
   }
 }

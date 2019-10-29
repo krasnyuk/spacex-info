@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {PreloadImagesService} from "./core/services/preload-images.service";
 
 @Component({
   selector: 'spx-root',
@@ -7,4 +8,9 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
+  constructor(private preloadImagesService: PreloadImagesService) {
+    this.preloadImagesService.preloadImages([
+      'assets/images/image-loading.gif',
+    ]);
+  }
 }
