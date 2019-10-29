@@ -7,8 +7,9 @@
       {{launch.launch_success ? 'check' : 'warning'}}
     </mat-icon>
   </mat-card-header>
-  <div *ngIf="launch.links.mission_patch_small as missionPatchSmall" fxLayout="row" fxLayoutAlign="center">
-    <img class="launch__mission-image" mat-card-image [src]="missionPatchSmall" [alt]="launch.mission_name">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <img spxImageLoader class="launch__mission-image" mat-card-image [src]="launch.links.mission_patch_small"
+         [alt]="launch.mission_name">
   </div>
   <mat-card-content class="launch__content">
     <p class="mat-body text-truncate">{{launch.details || 'No details available'}}</p>

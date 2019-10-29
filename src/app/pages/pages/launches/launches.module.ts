@@ -16,6 +16,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgxsModule} from "@ngxs/store";
 import {LaunchesState} from "./state/launches.state";
 import {ListFilterModule} from "../../../shared/modules/list-filter/list-filter.module";
+import {SharedModule} from "../../../shared/shared.module";
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {ListFilterModule} from "../../../shared/modules/list-filter/list-filter.
     ListFilterModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    SharedModule
   ]
 })
 export class LaunchesModule { }

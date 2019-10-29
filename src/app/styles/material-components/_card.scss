@@ -3,5 +3,9 @@
     .mat-card-header-text {
       max-width: 70%;
     }
+
+    .mat-card-image:first-child {
+      margin-top: unset;
+    }
   }
 }
