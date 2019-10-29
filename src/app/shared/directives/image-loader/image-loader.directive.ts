@@ -28,7 +28,7 @@ export class ImageLoaderDirective extends BaseUnsubscribe implements OnInit {
   }
 
   private loadOriginalImage() {
-    if (this.imageSrc) {
+    if (this.imageSrc && this.imageSrc !== this.loadingSrc) {
       const image = new Image();
       image.onload = () => this.renderer.setAttribute(this.el.nativeElement, 'src', image.src);
       image.src = this.imageSrc;
