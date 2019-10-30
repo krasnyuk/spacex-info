@@ -10,16 +10,16 @@ export class ImageLoaderDirective extends BaseUnsubscribe implements OnInit {
 
   @Input() loadingSrc: string = 'assets/images/image-loading.gif';
   @Input() onErrorSrc: string = 'assets/images/image-not-found.jpg';
+  @Input('src') public imageSrc: string;
 
-  constructor(@Attribute('src') public imageSrc: string,
-              private renderer: Renderer2,
+  constructor(private renderer: Renderer2,
               private el: ElementRef) {
     super();
   }
 
   ngOnInit(): void {
-    this.loadOriginalImage();
     this.showLoaderImage();
+    this.loadOriginalImage();
     this.onLoadError();
   }
 
@@ -28,7 +28,7 @@ export class ImageLoaderDirective extends BaseUnsubscribe implements OnInit {
   }
 
   private loadOriginalImage() {
-    if (this.imageSrc && this.imageSrc !== this.loadingSrc) {
+    if (this.imageSrc) {
       const image = new Image();
       image.onload = () => this.renderer.setAttribute(this.el.nativeElement, 'src', image.src);
       image.src = this.imageSrc;
