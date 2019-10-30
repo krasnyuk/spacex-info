@@ -9,6 +9,24 @@
           </mat-card-header>
           <mat-card-content>
             <p class="mat-body">{{launch.details}}</p>
+            <div class="external-links" *ngIf="launch.links as launchLinks" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+              <a spxExternalLink *ngIf="launchLinks.wikipedia as wikiLink" [href]="wikiLink"
+                 matTooltip="Wikipedia" mat-mini-fab>
+                <mat-icon>info</mat-icon>
+              </a>
+              <a spxExternalLink *ngIf="launchLinks.video_link as videoLink" [href]="videoLink"
+                 matTooltip="Video" mat-mini-fab>
+                <mat-icon>play_circle_outline</mat-icon>
+              </a>
+              <a spxExternalLink *ngIf="launchLinks.presskit as presskitLink" [href]="presskitLink"
+                 matTooltip="Press Kit" mat-mini-fab>
+                <mat-icon>description</mat-icon>
+              </a>
+              <a spxExternalLink *ngIf="launchLinks.article_link as articleLink" [href]="articleLink"
+                 matTooltip="Article" mat-mini-fab>
+                <mat-icon>menu_book</mat-icon>
+              </a>
+            </div>
           </mat-card-content>
         </div>
         <div fxFlex="15">
@@ -21,7 +39,8 @@
     <mat-card class="launch-gallery" *ngIf="launch.links.flickr_images as flickrImages">
       <mat-card-title>Gallery</mat-card-title>
       <div fxLayout="row wrap" fxLayoutAlign="start center">
-        <img spxImageLoader *ngFor="let image of flickrImages" class="img-responsive launch-gallery__image" [src]="image" alt="image">
+        <img spxImageLoader *ngFor="let image of flickrImages" class="img-responsive launch-gallery__image"
+             [src]="image" alt="image">
       </div>
     </mat-card>
   </div>

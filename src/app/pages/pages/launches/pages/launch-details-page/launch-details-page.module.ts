@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 
 import {LaunchDetailsPageRoutingModule} from './launch-details-page-routing.module';
 import {LaunchDetailsPageComponent} from './launch-details-page.component';
-import {MatButtonModule, MatCardModule, MatIconModule} from "@angular/material";
+import {MatButtonModule, MatCardModule, MatIconModule, MatTooltipModule} from "@angular/material";
 import {FlexModule} from "@angular/flex-layout";
 import {SharedModule} from "../../../../../shared/shared.module";
 
@@ -18,6 +18,7 @@ import {SharedModule} from "../../../../../shared/shared.module";
     SharedModule,
     MatButtonModule,
     MatIconModule,
+    MatTooltipModule,
   ]
 })
 export class LaunchDetailsPageModule { }
