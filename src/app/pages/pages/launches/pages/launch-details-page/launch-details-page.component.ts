@@ -18,7 +18,6 @@ export class LaunchDetailsPageComponent extends BaseUnsubscribe implements OnIni
   launch$: Observable<Launch>;
   private loading = new BehaviorSubject<boolean>(false);
 
-
   constructor(private spacexDataService: SpacexDataService, private activatedRoute: ActivatedRoute) {
     super();
   }

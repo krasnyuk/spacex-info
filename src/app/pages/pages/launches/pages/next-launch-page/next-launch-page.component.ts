@@ -1,4 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {SpacexDataService} from "../../../../../core/services/spacex-data.service";
+import {Observable} from "rxjs";
+import {Launch} from "../../../../../models/launches/launch.model";
 
 @Component({
   selector: 'spx-next-launch-page',
@@ -7,10 +10,16 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NextLaunchPageComponent implements OnInit {
+  launch$: Observable<Launch>;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private spacexDataService: SpacexDataService) {
   }
 
+  ngOnInit() {
+    this.loadNextLaunch();
+  }
+
+  private loadNextLaunch() {
+    this.launch$ = this.spacexDataService.getNextLaunch();
+  }
 }

@@ -1,1 +1,18 @@
-<p>next-launch-page works!</p>
+<ng-container *ngIf="launch$ | async as launch">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Next Launch
+      </mat-card-title>
+      <mat-card-subtitle>
+        Mission: {{launch.mission_name}}, Rocket: {{launch.rocket?.rocket_name}}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p class="mat-body">{{launch.details}}</p>
+      <spx-countdown-timer [countDownDate]="launch.launch_date_utc"></spx-countdown-timer>
+    </mat-card-content>
+
+  </mat-card>
+</ng-container>

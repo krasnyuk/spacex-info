@@ -41,4 +41,9 @@ export class SpacexDataService {
     return this.httpClient.get<Launch>(url);
   }
 
+  getNextLaunch(): Observable<Launch> {
+    const url: string = this.apiUrl + ApiEndpoints.Launches + `/next`;
+    return this.httpClient.get<Launch>(url);
+  }
+
 }

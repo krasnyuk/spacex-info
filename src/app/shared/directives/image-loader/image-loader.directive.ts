@@ -1,10 +1,10 @@
-import {Attribute, Directive, ElementRef, HostListener, Input, OnInit, Renderer2} from '@angular/core';
+import {Directive, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
 import {BaseUnsubscribe} from "../../../core/base/base-unsubscribe";
 import {fromEvent} from "rxjs";
 import {take, takeUntil} from "rxjs/operators";
 
 @Directive({
-  selector: '[spxImageLoader]'
+  selector: 'img[spxImageLoader]'
 })
 export class ImageLoaderDirective extends BaseUnsubscribe implements OnInit {
 
