@@ -4,6 +4,9 @@
       <div fxLayout="row" fxLayoutAlign="space-between">
         <div fxFlex="84">
           <mat-card-header>
+            <button mat-icon-button routerLink="../../" mat-card-avatar>
+              <mat-icon>arrow_back</mat-icon>
+            </button>
             <mat-card-title>{{launch.mission_name}}</mat-card-title>
             <mat-card-subtitle>{{launch.launch_date_utc | date}}</mat-card-subtitle>
           </mat-card-header>
