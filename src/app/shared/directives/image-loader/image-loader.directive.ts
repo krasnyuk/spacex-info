@@ -38,7 +38,7 @@ export class ImageLoaderDirective extends BaseUnsubscribe implements OnInit {
   private onLoadError(): void {
     fromEvent(this.el.nativeElement, 'error').pipe(
       take(1),
-      takeUntil(this.unsubscribeOnDestroy$)
+      takeUntil(this.componentDestroyed$)
     ).subscribe(() => {
       const imageSrc: string = this.onErrorSrc;
       this.renderer.setAttribute(this.el.nativeElement, 'src', imageSrc);

@@ -35,7 +35,7 @@ export class LaunchDetailsPageComponent extends BaseUnsubscribe implements OnIni
       switchMap((flightNumber: string) => this.spacexDataService.getLaunch(flightNumber).pipe(
         finalize(() => this.loading.next(false))
       )),
-      takeUntil(this.unsubscribeOnDestroy$)
+      takeUntil(this.componentDestroyed$)
     );
   }
 }

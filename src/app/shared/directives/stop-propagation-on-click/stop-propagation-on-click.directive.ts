@@ -19,7 +19,7 @@ export class StopPropagationOnClickDirective extends BaseUnsubscribe implements 
   private stopPropagationOnClick() {
     fromEvent(this.elRef.nativeElement, 'click').pipe(
       tap((event: MouseEvent) => event.stopPropagation()),
-      takeUntil(this.unsubscribeOnDestroy$)
+      takeUntil(this.componentDestroyed$)
     ).subscribe();
   }
 }

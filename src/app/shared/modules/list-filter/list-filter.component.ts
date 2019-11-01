@@ -60,7 +60,7 @@ export class ListFilterComponent extends BaseUnsubscribe implements OnInit {
       tap((orderBy: OrderBy) => {
         this.orderByChange.emit(orderBy);
       }),
-      takeUntil(this.unsubscribeOnDestroy$)
+      takeUntil(this.componentDestroyed$)
     ).subscribe();
   }
 
@@ -70,7 +70,7 @@ export class ListFilterComponent extends BaseUnsubscribe implements OnInit {
       tap((fieldName: string) => {
         this.sortByFieldChange.emit(fieldName);
       }),
-      takeUntil(this.unsubscribeOnDestroy$)
+      takeUntil(this.componentDestroyed$)
     ).subscribe();
   }
 }

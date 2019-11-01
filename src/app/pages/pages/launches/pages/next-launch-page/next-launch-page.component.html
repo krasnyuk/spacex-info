@@ -11,7 +11,7 @@
 
     <mat-card-content>
       <p class="mat-body">{{launch.details}}</p>
-      <spx-countdown-timer [countDownDate]="launch.launch_date_utc"></spx-countdown-timer>
+      <p [spxCountDownTimer]="launch.launch_date_utc"></p>
     </mat-card-content>
 
   </mat-card>

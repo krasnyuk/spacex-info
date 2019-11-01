@@ -1,9 +1,9 @@
 import {OnDestroy} from "@angular/core";
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
 
 export abstract class BaseUnsubscribe implements OnDestroy {
-  private unsubscribeOnDestroy = new Subject();
-  protected unsubscribeOnDestroy$ = this.unsubscribeOnDestroy.asObservable();
+  private unsubscribeOnDestroy = new Subject<void>();
+  protected componentDestroyed$: Observable<void> = this.unsubscribeOnDestroy.asObservable();
 
   ngOnDestroy(): void {
     this.unsubscribeOnDestroy.next();
