@@ -2,16 +2,24 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>
-        Next Launch
+        Mission: {{launch.mission_name}}
       </mat-card-title>
       <mat-card-subtitle>
-        Mission: {{launch.mission_name}}, Rocket: {{launch.rocket?.rocket_name}}
+        {{launch.launch_date_utc | date}}
       </mat-card-subtitle>
     </mat-card-header>
 
+    <div mat-card-image class="next-launch-time">
+      <div class="next-launch-time__overlay">
+        <div class="timer">
+          <h2 class="timer__title">Next Launch in:</h2>
+          <p class="timer__label" [spxCountDownTimer]="launch.launch_date_utc"></p>
+        </div>
+      </div>
+      <div class="next-launch-time__gradient"></div>
+    </div>
     <mat-card-content>
       <p class="mat-body">{{launch.details}}</p>
-      <p [spxCountDownTimer]="launch.launch_date_utc"></p>
     </mat-card-content>
 
   </mat-card>
