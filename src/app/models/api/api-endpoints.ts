@@ -1,3 +1,4 @@
 export enum ApiEndpoints {
-  Launches = 'launches'
+  Launches = 'launches',
+  History = 'history',
 }

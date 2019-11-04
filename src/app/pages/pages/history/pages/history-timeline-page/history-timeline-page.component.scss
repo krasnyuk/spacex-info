@@ -1,0 +1,33 @@
+@import "../../../../../styles/variables";
+
+.history-event {
+  padding: 20px 10px;
+  position: relative;
+
+  &__title {
+    color: $theme-accent;
+  }
+
+  &__icon {
+    position: absolute;
+    left: calc(12% - 23px / 2);
+    z-index: 2;
+  }
+
+  &__line {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    border: 1px dashed $theme-primary;
+    left: 12%;
+  }
+
+  &__info-section {
+    padding-left: 15px;
+  }
+
+  &__date-section {
+    margin-right: 15px;
+  }
+}

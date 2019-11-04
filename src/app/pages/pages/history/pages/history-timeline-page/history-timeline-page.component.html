@@ -1,1 +1,19 @@
-<p>history-timeline-page works!</p>
+<ng-container *ngIf="historyEvents$ | async as historyEvents">
+  <div @listAnimation>
+    <ng-container *ngFor="let event of historyEvents">
+      <div fxLayout="row" fxLayoutAlign="start center" class="history-event" @listItemEnterAnimation>
+        <div fxFlex="10" class="history-event__date-section" fxLayoutAlign="center center">
+          <mat-chip-list>
+            <mat-chip>{{event.event_date_utc | date}}</mat-chip>
+          </mat-chip-list>
+        </div>
+        <div class="history-event__line"></div>
+        <mat-icon class="history-event__icon" color="primary">radio_button_checked</mat-icon>
+        <div class="history-event__info-section" fxFlex>
+          <h2 class="mat-title history-event__title">{{event.title}}</h2>
+          <p class="mat-body">{{event.details}}</p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
