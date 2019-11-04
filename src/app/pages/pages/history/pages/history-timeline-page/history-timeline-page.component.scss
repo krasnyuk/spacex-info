@@ -1,5 +1,7 @@
 @import "../../../../../styles/variables";
 
+$offset-left: 12%;
+
 .history-event {
   padding: 20px 10px;
   position: relative;
@@ -10,7 +12,7 @@
 
   &__icon {
     position: absolute;
-    left: calc(12% - 23px / 2);
+    left: calc(#{$offset-left} - 23px / 2);
     z-index: 2;
   }
 
@@ -20,7 +22,15 @@
     top: 0;
     bottom: 0;
     border: 1px dashed $theme-primary;
-    left: 12%;
+    left: $offset-left;
+
+    &--first {
+      top: 50%;
+    }
+
+    &--last {
+      bottom: 50%;
+    }
   }
 
   &__info-section {
