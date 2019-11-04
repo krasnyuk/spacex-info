@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpResponse} from "@angular/common/http";
+import {HttpClient, HttpParams, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Launch} from "../../models/launches/launch.model";
 import {map} from "rxjs/operators";
@@ -47,9 +47,13 @@ export class SpacexDataService {
     return this.httpClient.get<Launch>(url);
   }
 
-  getHistory(): Observable<Array<HistoryEvent>> {
+  getHistory(sortBy: string = 'event_date_utc', order: OrderBy = OrderBy.DESC): Observable<Array<HistoryEvent>> {
     const url: string = this.apiUrl + ApiEndpoints.History;
-    return this.httpClient.get<Array<HistoryEvent>>(url);
+    const params = {
+      sort: sortBy,
+      order: order
+    };
+    return this.httpClient.get<Array<HistoryEvent>>(url, {params});
   }
 
 }
