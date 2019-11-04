@@ -11,6 +11,10 @@ import {RoutesNames} from "../../../models/routing/routes-names.enum";
 export class SideNavigationMenuComponent implements OnInit {
   readonly menuItems: Array<MenuItem> = [
     {
+      title: 'SpaceX History',
+      routerLink: [`/${RoutesNames.History}`]
+    },
+    {
       title: 'Launches',
       subitems: [
         {
@@ -22,7 +26,7 @@ export class SideNavigationMenuComponent implements OnInit {
           routerLink: [`/${RoutesNames.Launches}/${RoutesNames.NextLaunch}`]
         }
       ]
-    }
+    },
   ];
 
   constructor() {

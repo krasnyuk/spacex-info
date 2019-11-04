@@ -1,17 +1,32 @@
 <mat-accordion>
   <ng-container *ngFor="let menuItem of menuItems">
-    <mat-expansion-panel expanded class="navigation-menu-panel mat-elevation-z0">
-      <mat-expansion-panel-header>
-        <mat-panel-title>{{menuItem.title}}</mat-panel-title>
-      </mat-expansion-panel-header>
-      <mat-action-list *ngIf="menuItem.subitems">
-        <button class="navigation-menu-panel__link" *ngFor="let subitem of menuItem.subitems"
-                [disabled]="!subitem.routerLink"
-                [routerLink]="subitem.routerLink" routerLinkActive="navigation-menu-panel__link--active"
-                [routerLinkActiveOptions]="{exact: true}" mat-list-item>
-          {{subitem.title}}
+    <!--Menu item with subitems-->
+    <ng-container *ngIf="menuItem.subitems">
+      <mat-expansion-panel expanded class="navigation-menu-panel mat-elevation-z0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{menuItem.title}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-action-list>
+          <button class="navigation-menu-panel__link" *ngFor="let subitem of menuItem.subitems"
+                  [disabled]="!subitem.routerLink"
+                  [routerLink]="subitem.routerLink" routerLinkActive="navigation-menu-panel__link--active"
+                  [routerLinkActiveOptions]="{exact: true}" mat-list-item>
+            {{subitem.title}}
+          </button>
+        </mat-action-list>
+      </mat-expansion-panel>
+    </ng-container>
+    <!--Menu item without subitems-->
+    <ng-container *ngIf="!menuItem.subitems">
+      <mat-action-list>
+        <button mat-list-item class="navigation-menu-panel__link"
+                [disabled]="!menuItem.routerLink"
+                [routerLink]="menuItem.routerLink" routerLinkActive="navigation-menu-panel__link--active"
+                [routerLinkActiveOptions]="{exact: true}">
+          {{menuItem.title}}
         </button>
       </mat-action-list>
-    </mat-expansion-panel>
+    </ng-container>
+
   </ng-container>
 </mat-accordion>

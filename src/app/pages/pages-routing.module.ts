@@ -17,6 +17,10 @@ const routes: Routes = [
       {
         path: RoutesNames.Launches,
         loadChildren: () => import('./pages/launches/launches.module').then(m => m.LaunchesModule)
+      },
+      {
+        path: RoutesNames.History,
+        loadChildren: () => import('./pages/history/history.module').then(m => m.HistoryModule)
       }
     ]
   }
