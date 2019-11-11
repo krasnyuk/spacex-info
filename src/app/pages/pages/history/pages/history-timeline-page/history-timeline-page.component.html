@@ -1,7 +1,7 @@
 <ng-container *ngIf="historyEvents$ | async as historyEvents">
-  <div @listAnimation>
+  <div class="history-events-container" @listFadeAnimation>
     <ng-container *ngFor="let event of historyEvents; let isFirst = first; let isLast = last;">
-      <div fxLayout="row" fxLayoutAlign="start center" class="history-event" @listItemEnterAnimation>
+      <div fxLayout="row" fxLayoutAlign="start center" class="history-event">
         <div fxFlex="10" class="history-event__date-section" fxLayoutAlign="center center">
           <mat-chip-list>
             <mat-chip>{{event.event_date_utc | date}}</mat-chip>

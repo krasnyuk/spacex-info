@@ -1,15 +1,15 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {SpacexDataService} from "../../../../../core/services/spacex-data.service";
 import {Observable} from "rxjs";
 import {HistoryEvent} from "../../../../../models/history/history.model";
-import {listAnimation} from "../../../../../core/animations/list.animation";
+import {listFadeAnimation} from "../../../../../core/animations/list.animation";
 
 @Component({
   selector: 'spx-history-timeline-page',
   templateUrl: './history-timeline-page.component.html',
   styleUrls: ['./history-timeline-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: listAnimation
+  animations: listFadeAnimation
 })
 export class HistoryTimelinePageComponent implements OnInit {
   historyEvents$: Observable<Array<HistoryEvent>>;

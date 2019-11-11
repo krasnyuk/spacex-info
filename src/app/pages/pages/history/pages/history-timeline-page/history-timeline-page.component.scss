@@ -1,6 +1,10 @@
 @import "../../../../../styles/variables";
 
-$offset-left: 11%;
+.history-events-container {
+  padding-left: 10px;
+}
+
+$offset-left: 0%;
 
 .history-event {
   padding: 20px 10px;
@@ -34,7 +38,7 @@ $offset-left: 11%;
   }
 
   &__info-section {
-    padding-left: 3%;
+    margin-left: 10px;
   }
 
   &__date-section {
