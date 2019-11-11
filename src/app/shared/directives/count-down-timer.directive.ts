@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, NgZone} from '@angular/core';
+import {Directive, ElementRef, Input, NgZone, OnInit} from '@angular/core';
 import {merge, Subject, timer} from "rxjs";
 import {takeUntil, tap} from "rxjs/operators";
 import {BaseUnsubscribe} from "../../core/base/base-unsubscribe";
@@ -6,14 +6,13 @@ import {BaseUnsubscribe} from "../../core/base/base-unsubscribe";
 @Directive({
   selector: '[spxCountDownTimer]'
 })
-export class CountDownTimerDirective extends BaseUnsubscribe {
+export class CountDownTimerDirective extends BaseUnsubscribe implements OnInit {
   private timerLabelFormatted: string;
   private dateExpired = new Subject();
   private readonly timerDelay: number = 0;
 
   @Input('spxCountDownTimer') countDownDate: Date | string;
   @Input() timerInterval: number = 1000;
-  @Input() timerExpiredLabel: string = 'Expired';
   @Input() timerLabelPattern: string = '{days}d {hours}h {minutes}m {seconds}s';
 
   constructor(private ngZone: NgZone, private elementRef: ElementRef<HTMLElement>) {
@@ -43,9 +42,10 @@ export class CountDownTimerDirective extends BaseUnsubscribe {
     const seconds: number = this.getSeconds(datesDiff);
     if (datesDiff < 0) {
       this.dateExpired.next();
-      this.timerLabelFormatted = this.timerExpiredLabel;
+      this.timerLabelFormatted = this.getTimerLabelFormatted(0, 0, 0, 0);
+    } else {
+      this.timerLabelFormatted = this.getTimerLabelFormatted(days, hours, minutes, seconds);
     }
-    this.timerLabelFormatted = this.getTimerLabelFormatted(days, hours, minutes, seconds);
     this.elementRef.nativeElement.innerText = this.timerLabelFormatted;
   }
 
