@@ -12,18 +12,18 @@ export class SideNavigationMenuComponent implements OnInit {
   readonly menuItems: Array<MenuItem> = [
     {
       title: 'SpaceX History',
-      routerLink: [`/${RoutesNames.History}`]
+      routerLink: [`/${RoutesNames.Pages}/${RoutesNames.History}`]
     },
     {
       title: 'Launches',
       subitems: [
         {
           title: 'All Launches',
-          routerLink: [`/${RoutesNames.Launches}`]
+          routerLink: [`/${RoutesNames.Pages}/${RoutesNames.Launches}`]
         },
         {
           title: 'Next Launch',
-          routerLink: [`/${RoutesNames.Launches}/${RoutesNames.NextLaunch}`]
+          routerLink: [`/${RoutesNames.Pages}/${RoutesNames.Launches}/${RoutesNames.NextLaunch}`]
         }
       ]
     },
