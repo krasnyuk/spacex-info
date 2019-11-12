@@ -1,8 +1,10 @@
 <mat-card class="rocket-card" fxLayout="row">
 
-  <img spxImageLoader class="rocket-card__image" fxFlex="20" *ngIf="rocket.flickr_images as rocketImages"
-       [src]="rocketImages[0]"
-       [alt]="rocket.rocket_name">
+  <div fxFlex="20">
+    <img spxImageLoader class="rocket-card__image img-responsive" *ngIf="rocket.flickr_images as rocketImages"
+         [src]="rocketImages[0]"
+         [alt]="rocket.rocket_name">
+  </div>
 
   <div class="rocket-card__content">
     <mat-card-header>
@@ -17,6 +19,8 @@
     <mat-card-content fxLayout="column" fxLayoutGap="15px">
       <p class="mat-body">{{rocket.description}}</p>
 
+      <h3 class="mat-subheading-2">General info:</h3>
+
       <mat-chip-list>
         <mat-chip>Stages: {{rocket.stages}}</mat-chip>
         <mat-chip>Success rate: {{rocket.success_rate_pct}}%</mat-chip>
@@ -24,6 +28,14 @@
         <mat-chip>Height: {{rocket.height.meters}} m</mat-chip>
         <mat-chip>Diameter: {{rocket.diameter.meters}} m</mat-chip>
         <mat-chip>Mass: {{rocket.mass.kg}} kg</mat-chip>
+      </mat-chip-list>
+
+      <h3 class="mat-subheading-2">Payload weight:</h3>
+
+      <mat-chip-list>
+        <mat-chip *ngFor="let weightInfo of rocket.payload_weights">
+          {{weightInfo.name}}: {{weightInfo.kg}} kg
+        </mat-chip>
       </mat-chip-list>
     </mat-card-content>
   </div>

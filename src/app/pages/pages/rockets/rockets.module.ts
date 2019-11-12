@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { RocketsRoutingModule } from './rockets-routing.module';
-import { RocketsListPageComponent } from './pages/rockets-list-page/rockets-list-page.component';
+import {RocketsRoutingModule} from './rockets-routing.module';
+import {RocketsListPageComponent} from './pages/rockets-list-page/rockets-list-page.component';
 import {MatCardModule, MatChipsModule, MatIconModule, MatTooltipModule} from "@angular/material";
 import {FlexModule} from "@angular/flex-layout";
-import { RocketCardComponent } from './components/rocket-card/rocket-card.component';
+import {RocketCardComponent} from './components/rocket-card/rocket-card.component';
 import {SharedModule} from "../../../shared/shared.module";
 
 
@@ -19,7 +19,7 @@ import {SharedModule} from "../../../shared/shared.module";
     SharedModule,
     MatTooltipModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
   ]
 })
 export class RocketsModule { }
