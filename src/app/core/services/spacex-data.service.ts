@@ -8,6 +8,7 @@ import {ApiEndpoints} from "../../models/api/api-endpoints";
 import {ApiUtils} from "../utils/api.utils";
 import {OrderBy} from "../../models/api/order-by.enum";
 import {HistoryEvent} from "../../models/history/history.model";
+import {Rocket} from "../../models/rockets/rocket.model";
 
 @Injectable({
   providedIn: 'root'
@@ -51,9 +52,13 @@ export class SpacexDataService {
     const url: string = this.apiUrl + ApiEndpoints.History;
     const params = {
       sort: sortBy,
-      order: order
+      order
     };
     return this.httpClient.get<Array<HistoryEvent>>(url, {params});
   }
 
+  getRockets(): Observable<Array<Rocket>> {
+    const url: string = this.apiUrl + ApiEndpoints.Rockets;
+    return this.httpClient.get<Array<Rocket>>(url);
+  }
 }

@@ -27,6 +27,10 @@ export class SideNavigationMenuComponent implements OnInit {
         }
       ]
     },
+    {
+      title: 'Rockets',
+      routerLink: [`/${RoutesNames.Pages}/${RoutesNames.Rockets}`]
+    },
   ];
 
   constructor() {

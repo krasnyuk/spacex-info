@@ -59,7 +59,7 @@ export interface Fairings {
   ship?: any;
 }
 
-export interface Rocket {
+export interface LaunchRocket {
   rocket_id: string;
   rocket_name: string;
   rocket_type: string;
@@ -116,7 +116,7 @@ export interface Launch {
   tentative_max_precision: string;
   tbd: boolean;
   launch_window: number;
-  rocket: Rocket;
+  rocket: LaunchRocket;
   ships: any[];
   telemetry: Telemetry;
   launch_site: LaunchSite;

@@ -21,6 +21,10 @@ const routes: Routes = [
       {
         path: RoutesNames.History,
         loadChildren: () => import('./pages/history/history.module').then(m => m.HistoryModule)
+      },
+      {
+        path: RoutesNames.Rockets,
+        loadChildren: () => import('./pages/rockets/rockets.module').then(m => m.RocketsModule)
       }
     ]
   }

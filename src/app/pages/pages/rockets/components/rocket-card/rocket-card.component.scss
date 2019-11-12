@@ -1,0 +1,18 @@
+@import "../../../../../styles/variables";
+
+.rocket-card {
+  padding: 0;
+  overflow: hidden;
+
+  &__image {
+    margin-bottom: 0;
+  }
+
+  &__content {
+    padding: 16px;
+  }
+
+  &__title {
+    color: $theme-accent;
+  }
+}
