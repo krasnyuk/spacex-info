@@ -1,6 +1,7 @@
 <mat-card class="rocket-card" fxLayout="row">
 
-  <img spxImageLoader class="rocket-card__image" fxFlex="20" *ngIf="rocket.flickr_images as rocketImages" [src]="rocketImages[0]"
+  <img spxImageLoader class="rocket-card__image" fxFlex="20" *ngIf="rocket.flickr_images as rocketImages"
+       [src]="rocketImages[0]"
        [alt]="rocket.rocket_name">
 
   <div class="rocket-card__content">
@@ -13,8 +14,22 @@
       </mat-card-subtitle>
     </mat-card-header>
 
-    <mat-card-content>
+    <mat-card-content fxLayout="column" fxLayoutGap="15px">
       <p class="mat-body">{{rocket.description}}</p>
+
+      <mat-chip-list>
+        <mat-chip>Stages: {{rocket.stages}}</mat-chip>
+        <mat-chip>Success rate: {{rocket.success_rate_pct}}%</mat-chip>
+        <mat-chip>First flight: {{rocket.first_flight | date}}</mat-chip>
+        <mat-chip>Height: {{rocket.height.meters}} m</mat-chip>
+        <mat-chip>Diameter: {{rocket.diameter.meters}} m</mat-chip>
+        <mat-chip>Mass: {{rocket.mass.kg}} kg</mat-chip>
+      </mat-chip-list>
     </mat-card-content>
   </div>
+
+  <mat-icon class="rocket-card__is-active" [matTooltip]="rocket.active ? 'Rocket is active' : 'Rocket not active'"
+            [ngClass]="{'mat-icon--warning': !rocket.active, 'mat-icon--success': rocket.active}">
+    {{rocket.active ? 'check' : 'warning'}}
+  </mat-icon>
 </mat-card>

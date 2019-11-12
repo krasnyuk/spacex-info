@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RocketsRoutingModule } from './rockets-routing.module';
 import { RocketsListPageComponent } from './pages/rockets-list-page/rockets-list-page.component';
-import {MatCardModule, MatTooltipModule} from "@angular/material";
+import {MatCardModule, MatChipsModule, MatIconModule, MatTooltipModule} from "@angular/material";
 import {FlexModule} from "@angular/flex-layout";
 import { RocketCardComponent } from './components/rocket-card/rocket-card.component';
 import {SharedModule} from "../../../shared/shared.module";
@@ -17,7 +17,9 @@ import {SharedModule} from "../../../shared/shared.module";
     MatCardModule,
     FlexModule,
     SharedModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatChipsModule,
+    MatIconModule
   ]
 })
 export class RocketsModule { }
