@@ -1,9 +1,8 @@
 <mat-card class="rocket-card" fxLayout="row">
 
-  <div fxFlex="20">
-    <img spxImageLoader class="rocket-card__image img-responsive" *ngIf="rocket.flickr_images as rocketImages"
-         [src]="rocketImages[0]"
-         [alt]="rocket.rocket_name">
+  <div class="rocket-card__image" *ngIf="rocket.flickr_images as rocketImages"
+       [ngStyle]="{'background-image': 'url(' + rocketImages[0] +')'}"
+       fxFlex="25">
   </div>
 
   <div class="rocket-card__content">

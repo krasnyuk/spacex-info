@@ -6,7 +6,9 @@
   overflow: hidden;
 
   &__image {
-    margin-bottom: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
   &__content {
