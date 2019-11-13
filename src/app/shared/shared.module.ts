@@ -4,12 +4,14 @@ import {StopPropagationOnClickDirective} from "./directives/stop-propagation-on-
 import {ImageLoaderDirective} from './directives/image-loader/image-loader.directive';
 import {ExternalLinkDirective} from './directives/external-link.directive';
 import { CountDownTimerDirective } from './directives/count-down-timer.directive';
+import { BackgroundImageDirective } from './directives/background-image/background-image.directive';
 
 const directives: Array<any> = [
   StopPropagationOnClickDirective,
   ImageLoaderDirective,
   ExternalLinkDirective,
-  CountDownTimerDirective
+  CountDownTimerDirective,
+  BackgroundImageDirective,
 ];
 
 const components: Array<any> = [
