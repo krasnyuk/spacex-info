@@ -5,4 +5,5 @@ export enum RoutesNames {
   LaunchDetails = 'launchFlightNumber',
   History = 'history',
   Rockets = 'rockets',
+  Dashboard = 'dashboard',
 }

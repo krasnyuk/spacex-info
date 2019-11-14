@@ -18,8 +18,8 @@
       </div>
       <div class="next-launch-time__gradient"></div>
     </div>
-    <mat-card-content>
-      <p class="mat-body">{{launch.details}}</p>
+    <mat-card-content *ngIf="launch.details as launchDetails">
+      <p class="mat-body">{{launchDetails}}</p>
     </mat-card-content>
 
   </mat-card>

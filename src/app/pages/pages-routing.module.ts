@@ -25,9 +25,13 @@ const routes: Routes = [
       {
         path: RoutesNames.Rockets,
         loadChildren: () => import('./pages/rockets/rockets.module').then(m => m.RocketsModule)
+      },
+      {
+        path: RoutesNames.Dashboard,
+        loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
       }
     ]
-  }
+  },
 ];
 
 @NgModule({
