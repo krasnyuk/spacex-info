@@ -10,10 +10,10 @@ import {RoutesNames} from "../../../models/routing/routes-names.enum";
 })
 export class SideNavigationMenuComponent implements OnInit {
   readonly menuItems: Array<MenuItem> = [
-    {
-      title: 'Dashboard',
-      routerLink: [`/${RoutesNames.Pages}/${RoutesNames.Dashboard}`]
-    },
+    // {
+    //   title: 'Dashboard',
+    //   routerLink: [`/${RoutesNames.Pages}/${RoutesNames.Dashboard}`]
+    // },
     {
       title: 'SpaceX History',
       routerLink: [`/${RoutesNames.Pages}/${RoutesNames.History}`]
