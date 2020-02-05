@@ -44,7 +44,7 @@ export class LaunchDetailsPageComponent extends BaseUnsubscribe implements OnIni
   private setSeoInfo() {
     this.launch$.pipe(
       tap((launch: Launch) => {
-        this.seoService.updateTitle(launch.mission_name);
+        this.seoService.updateTitle(`${launch.mission_name} mission`);
         this.seoService.updateDescription(launch.details);
       }),
       takeUntil(this.componentDestroyed$)
