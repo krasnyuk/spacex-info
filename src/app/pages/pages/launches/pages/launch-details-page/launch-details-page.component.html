@@ -4,7 +4,7 @@
       <div fxLayout="row" fxLayoutAlign="space-between">
         <div fxFlex="84">
           <mat-card-header>
-            <button mat-icon-button routerLink="../../" mat-card-avatar>
+            <button mat-icon-button [routerLink]="['..', '..']" mat-card-avatar>
               <mat-icon>arrow_back</mat-icon>
             </button>
             <mat-card-title>{{launch.mission_name}}</mat-card-title>

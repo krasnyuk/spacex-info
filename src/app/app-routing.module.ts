@@ -12,6 +12,11 @@ const routes: Routes = [
   {
     path: RoutesNames.Pages,
     loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: RoutesNames.Pages
   }
 ];
 
