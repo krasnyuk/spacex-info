@@ -2,7 +2,8 @@
 
 
 <mat-sidenav-container class="sidenav-menu">
-  <mat-sidenav [mode]="('lt-md' | media) ? 'over' :'side'" opened class="sidenav-menu__navigation-section mat-elevation-z2"
+  <mat-sidenav [mode]="('lt-md' | media) ? 'over' :'side'" [opened]="['gt-sm'] | media"
+               class="sidenav-menu__navigation-section mat-elevation-z2"
                [fixedInViewport]="true" [fixedTopGap]="('xs' | media) ? 54 : 64"
                [fixedBottomGap]="0">
     <spx-side-navigation-menu></spx-side-navigation-menu>
