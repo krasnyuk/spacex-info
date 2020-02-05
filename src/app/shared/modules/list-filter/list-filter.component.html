@@ -9,15 +9,15 @@
         <mat-icon>filter_list</mat-icon>
         <span>Filters</span>
       </div>
-      <mat-paginator spxStopPropagationOnClick class="list-filter-paginator" [length]="listLength"
-                     [pageSize]="pageSize" [pageIndex]="pageIndex"
-                     [pageSizeOptions]="pageSizeOptions" showFirstLastButtons
-                     (page)="pageChange.emit($event)"></mat-paginator>
+
+      <ng-container *ngIf="'gt-sm' | media; then paginator"></ng-container>
     </mat-panel-title>
   </mat-expansion-panel-header>
 
-  <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start center">
-    <mat-form-field>
+  <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutGap="10px" fxLayoutAlign="start center"
+       fxLayoutAlign.lt-md="start start">
+
+    <mat-form-field class="list-filter-panel__field">
       <mat-label>Sort By</mat-label>
       <mat-select [formControl]="sortByFieldControl">
         <mat-option *ngFor="let item of sortByFieldList" [value]="item.value">
@@ -26,7 +26,7 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="list-filter-panel__field">
       <mat-label>Order By</mat-label>
       <mat-select [formControl]="orderByControl">
         <mat-option *ngFor="let item of orderByList" [value]="item.value">
@@ -36,5 +36,14 @@
     </mat-form-field>
 
     <ng-content></ng-content>
+
+    <ng-container *ngIf="'lt-md' | media; then paginator"></ng-container>
   </div>
 </mat-expansion-panel>
+
+<ng-template #paginator>
+  <mat-paginator spxStopPropagationOnClick class="list-filter-paginator" [length]="listLength"
+                 [pageSize]="pageSize" [pageIndex]="pageIndex"
+                 [pageSizeOptions]="pageSizeOptions" showFirstLastButtons
+                 (page)="pageChange.emit($event)"></mat-paginator>
+</ng-template>

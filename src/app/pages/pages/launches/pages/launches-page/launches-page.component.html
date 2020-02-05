@@ -9,7 +9,7 @@
                  (pageChange)="onPageChange($event)"
                  (orderByChange)="onOrderByChange($event)"
                  (sortByFieldChange)="onSortByChange($event)">
-  <mat-form-field>
+  <mat-form-field class="filter-field">
     <mat-label>Launch Successful</mat-label>
     <mat-select [value]="isSuccessfulFilter$ | async" (selectionChange)="onLaunchIsSuccessfulChange($event)">
       <mat-option *ngFor="let item of isSuccessfullFilterValues" [value]="item.value">
@@ -22,5 +22,5 @@
 <div *ngIf="(launches$ | async).length > 0" @listAnimation fxLayout="row wrap" fxLayoutAlign="start start">
   <spx-launch-card *ngFor="let launch of launches$ | async; trackBy: trackById"
                    [launch]="launch"
-                   @listItemEnterAnimation class="launch-card" fxFlex="25"></spx-launch-card>
+                   @listItemEnterAnimation class="launch-card" fxFlex="25" fxFlex.lt-md="50" fxFlex.xs="100"></spx-launch-card>
 </div>

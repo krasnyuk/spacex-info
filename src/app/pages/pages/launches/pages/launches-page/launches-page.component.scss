@@ -1,4 +1,12 @@
+@import "../../../../../styles/mixins/media";
+
 .launch-card, .list-filter {
   padding: 5px;
   display: block;
+}
+
+.filter-field {
+  @include media-lt-md {
+    width: 100%;
+  }
 }
