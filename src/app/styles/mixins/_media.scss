@@ -1,0 +1,79 @@
+/* Flex-layout breakpoints for CSS: https://github.com/angular/flex-layout/wiki/Responsive-API */
+
+@mixin media-xs {
+  @media screen and (max-width: 599px) {
+    @content;
+  }
+}
+
+@mixin media-sm {
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    @content;
+  }
+}
+
+@mixin media-md {
+  @media screen and (min-width: 960px) and (max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin media-lg {
+  @media screen and (min-width: 1280px) and (max-width: 1919px) {
+    @content;
+  }
+}
+
+@mixin media-xl {
+  @media screen and (min-width: 1920px) and (max-width: 5000px) {
+    @content;
+  }
+}
+
+@mixin media-lt-sm {
+  @media screen and (max-width: 599px) {
+    @content;
+  }
+}
+
+@mixin media-lt-md {
+  @media screen and (max-width: 959px) {
+    @content;
+  }
+}
+
+@mixin media-lt-lg {
+  @media screen and (max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin media-lt-xl {
+  @media screen and (max-width: 1919px) {
+    @content;
+  }
+}
+
+@mixin media-gt-xs {
+  @media screen and (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin media-gt-sm {
+  @media screen and (min-width: 960px) {
+    @content;
+  }
+}
+
+@mixin media-gt-md {
+  @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin media-gt-lg {
+  @media screen and (min-width: 1920px) {
+    @content;
+  }
+}

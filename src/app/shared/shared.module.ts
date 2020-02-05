@@ -5,6 +5,7 @@ import {ImageLoaderDirective} from './directives/image-loader/image-loader.direc
 import {ExternalLinkDirective} from './directives/external-link.directive';
 import { CountDownTimerDirective } from './directives/count-down-timer.directive';
 import { BackgroundImageDirective } from './directives/background-image/background-image.directive';
+import { MediaPipe } from './pipes/media.pipe';
 
 const directives: Array<any> = [
   StopPropagationOnClickDirective,
@@ -12,6 +13,10 @@ const directives: Array<any> = [
   ExternalLinkDirective,
   CountDownTimerDirective,
   BackgroundImageDirective,
+];
+
+const pipes: Array<any> = [
+  MediaPipe,
 ];
 
 const components: Array<any> = [
@@ -24,10 +29,12 @@ const components: Array<any> = [
   declarations: [
     ...directives,
     ...components,
+    ...pipes
   ],
   exports: [
     ...directives,
-    ...components
+    ...components,
+    ...pipes
   ]
 })
 export class SharedModule { }

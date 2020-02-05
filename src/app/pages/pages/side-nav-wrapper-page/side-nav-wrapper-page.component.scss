@@ -1,3 +1,5 @@
+@import "../../../styles/mixins/media";
+
 $content-padding: 15px;
 $header-height: 64px;
 
@@ -15,5 +17,13 @@ $header-height: 64px;
   &__navigation-section {
     padding: $content-padding;
     width: 15vw;
+
+    @include media-sm {
+      width: 30vw;
+    }
+
+    @include media-xs {
+      width: 75vw;
+    }
   }
 }

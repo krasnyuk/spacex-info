@@ -1,8 +1,9 @@
-<spx-header></spx-header>
+<spx-header (toggleSidenavClicked)="toggleSidenav()"></spx-header>
+
 
 <mat-sidenav-container class="sidenav-menu">
-  <mat-sidenav mode="side" opened class="sidenav-menu__navigation-section mat-elevation-z2"
-               [fixedInViewport]="true" [fixedTopGap]="64"
+  <mat-sidenav [mode]="('lt-md' | media) ? 'over' :'side'" opened class="sidenav-menu__navigation-section mat-elevation-z2"
+               [fixedInViewport]="true" [fixedTopGap]="('xs' | media) ? 54 : 64"
                [fixedBottomGap]="0">
     <spx-side-navigation-menu></spx-side-navigation-menu>
   </mat-sidenav>

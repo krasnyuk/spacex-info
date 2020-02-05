@@ -5,7 +5,7 @@ import {PagesRoutingModule} from './pages-routing.module';
 import {SideNavWrapperPageComponent} from './pages/side-nav-wrapper-page/side-nav-wrapper-page.component';
 import {
   MatButtonModule,
-  MatExpansionModule,
+  MatExpansionModule, MatIconModule,
   MatListModule,
   MatSidenavModule,
   MatToolbarModule
@@ -13,6 +13,7 @@ import {
 import {HeaderComponent} from './components/header/header.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {SideNavigationMenuComponent} from './components/side-navigation-menu/side-navigation-menu.component';
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -25,7 +26,9 @@ import {SideNavigationMenuComponent} from './components/side-navigation-menu/sid
     FlexLayoutModule,
     MatExpansionModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    SharedModule,
+    MatIconModule
   ]
 })
 export class PagesModule {

@@ -1,4 +1,5 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit, ViewChild} from '@angular/core';
+import {MatSidenav} from "@angular/material";
 
 @Component({
   selector: 'spx-side-nav-wrapper-page',
@@ -7,10 +8,15 @@ import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SideNavWrapperPageComponent implements OnInit {
+  @ViewChild(MatSidenav, {static: true}) sidenav: MatSidenav;
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  public toggleSidenav(): void {
+    this.sidenav.toggle();
   }
 }
