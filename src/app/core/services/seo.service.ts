@@ -10,7 +10,7 @@ export class SeoService {
   }
 
   updateTitle(title: string) {
-    this.title.setTitle(title);
+    this.title.setTitle(`${title} | SpaceX Info`);
   }
 
   updateOgUrl(url: string) {

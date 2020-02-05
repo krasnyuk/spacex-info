@@ -31,7 +31,7 @@ export class NextLaunchPageComponent extends BaseUnsubscribe implements OnInit {
   private setSeoInfo() {
     this.launch$.pipe(
       tap((launch: Launch) => {
-        const title: string = `Next Launch | Mission: ${launch.mission_name} | SpaceX Info`;
+        const title: string = `Next Launch | Mission: ${launch.mission_name}`;
         const description: string = `SpaceX next launch date: ${launch.launch_date_utc}. Details: ${launch.details}`;
         this.seoService.updateTitle(title);
         this.seoService.updateDescription(description);

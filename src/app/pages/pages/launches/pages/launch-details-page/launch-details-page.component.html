@@ -1,18 +1,18 @@
 <ng-container *ngIf="launch$ | async as launch">
   <div fxLayout="column" fxLayoutGap="15px">
-    <mat-card class="example-card">
-      <div fxLayout="row" fxLayoutAlign="space-between">
+    <mat-card class="launch-details-card">
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between" fxLayoutAlign.lt-md="start center">
         <div fxFlex="84">
           <mat-card-header>
             <button mat-icon-button [routerLink]="['..', '..']" mat-card-avatar>
               <mat-icon>arrow_back</mat-icon>
             </button>
-            <mat-card-title>{{launch.mission_name}}</mat-card-title>
-            <mat-card-subtitle>{{launch.launch_date_utc | date}}</mat-card-subtitle>
+            <mat-card-title>{{launch?.mission_name}}</mat-card-title>
+            <mat-card-subtitle>{{launch?.launch_date_utc | date}}</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
-            <p class="mat-body">{{launch.details}}</p>
-            <div class="external-links" *ngIf="launch.links as launchLinks" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+            <p class="mat-body">{{launch?.details}}</p>
+            <div class="external-links" *ngIf="launch?.links as launchLinks" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
               <a spxExternalLink *ngIf="launchLinks.wikipedia as wikiLink" [href]="wikiLink"
                  matTooltip="Wikipedia" mat-mini-fab>
                 <mat-icon>info</mat-icon>
@@ -33,13 +33,13 @@
           </mat-card-content>
         </div>
         <div fxFlex="15">
-          <img spxImageLoader class="img-responsive" [src]="launch.links.mission_patch_small"
-               [alt]="launch.mission_name">
+          <img spxImageLoader class="img-responsive" [src]="launch?.links.mission_patch_small"
+               [alt]="launch?.mission_name">
         </div>
       </div>
     </mat-card>
 
-    <mat-card class="launch-gallery" *ngIf="launch.links.flickr_images as flickrImages">
+    <mat-card class="launch-gallery" *ngIf="launch?.links.flickr_images as flickrImages">
       <mat-card-title>Gallery</mat-card-title>
       <div fxLayout="row wrap" fxLayoutAlign="start center">
         <img spxImageLoader *ngFor="let image of flickrImages" class="img-responsive launch-gallery__image"

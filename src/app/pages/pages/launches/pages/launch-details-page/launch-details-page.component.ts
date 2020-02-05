@@ -6,6 +6,7 @@ import {BaseUnsubscribe} from "../../../../../core/base/base-unsubscribe";
 import {RoutesNames} from "../../../../../models/routing/routes-names.enum";
 import {BehaviorSubject, Observable} from "rxjs";
 import {Launch} from "../../../../../models/launches/launch.model";
+import {SeoService} from "../../../../../core/services/seo.service";
 
 @Component({
   selector: 'spx-launch-details-page',
@@ -18,13 +19,14 @@ export class LaunchDetailsPageComponent extends BaseUnsubscribe implements OnIni
   launch$: Observable<Launch>;
   private loading = new BehaviorSubject<boolean>(false);
 
-  constructor(private spacexDataService: SpacexDataService, private activatedRoute: ActivatedRoute) {
+  constructor(private spacexDataService: SpacexDataService, private activatedRoute: ActivatedRoute, private seoService: SeoService) {
     super();
   }
 
   ngOnInit() {
     this.loading$ = this.loading.asObservable();
     this.getLaunchDetails();
+    this.setSeoInfo();
   }
 
   private getLaunchDetails() {
@@ -37,5 +39,15 @@ export class LaunchDetailsPageComponent extends BaseUnsubscribe implements OnIni
       )),
       takeUntil(this.componentDestroyed$)
     );
+  }
+
+  private setSeoInfo() {
+    this.launch$.pipe(
+      tap((launch: Launch) => {
+        this.seoService.updateTitle(launch.mission_name);
+        this.seoService.updateDescription(launch.details);
+      }),
+      takeUntil(this.componentDestroyed$)
+    ).subscribe();
   }
 }
