@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LaunchDetailsPageComponent } from './launch-details-page.component';
+import { LaunchDetailsPageComponent } from './pages/launch-details-page/launch-details-page.component';
 
 const routes: Routes = [{ path: '', component: LaunchDetailsPageComponent }];
 
