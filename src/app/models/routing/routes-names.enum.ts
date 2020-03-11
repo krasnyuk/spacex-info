@@ -6,4 +6,6 @@ export enum RoutesNames {
   History = 'history',
   Rockets = 'rockets',
   Dashboard = 'dashboard',
+  Video = 'video',
+  Gallery = 'gallery',
 }

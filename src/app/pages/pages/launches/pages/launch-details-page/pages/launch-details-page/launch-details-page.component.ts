@@ -17,6 +17,8 @@ import {LoadLaunchDetails} from "../../state/launch-details.actions";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LaunchDetailsPageComponent extends BaseUnsubscribe implements OnInit {
+  readonly routeNames = RoutesNames;
+
   @Select(LaunchDetailsState.launchIsLoading) loading$: Observable<boolean>;
   @Select(LaunchDetailsState.launchDetails) launch$: Observable<Launch | null>;
 

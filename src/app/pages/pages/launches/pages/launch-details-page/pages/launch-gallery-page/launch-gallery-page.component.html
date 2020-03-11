@@ -1,0 +1,7 @@
+<ng-container *ngIf="launch$ | async as launch">
+  <div *ngIf="launch?.links.flickr_images as flickrImages" class="launch-gallery" fxLayout="row wrap"
+       fxLayoutAlign="start center">
+    <img spxImageLoader *ngFor="let image of flickrImages" class="img-responsive launch-gallery__image"
+         [src]="image" alt="image">
+  </div>
+</ng-container>

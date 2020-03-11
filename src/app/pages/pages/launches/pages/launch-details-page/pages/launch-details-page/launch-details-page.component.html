@@ -4,7 +4,7 @@
       <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between" fxLayoutAlign.lt-md="start center">
         <div fxFlex="84">
           <mat-card-header>
-            <button mat-icon-button [routerLink]="['..', '..']" mat-card-avatar>
+            <button mat-icon-button [routerLink]="['..', '..', '..']" mat-card-avatar>
               <mat-icon>arrow_back</mat-icon>
             </button>
             <mat-card-title>{{launch?.mission_name}}</mat-card-title>
@@ -39,12 +39,17 @@
       </div>
     </mat-card>
 
-    <mat-card class="launch-gallery" *ngIf="launch?.links.flickr_images as flickrImages">
-      <mat-card-title>Gallery</mat-card-title>
-      <div fxLayout="row wrap" fxLayoutAlign="start center">
-        <img spxImageLoader *ngFor="let image of flickrImages" class="img-responsive launch-gallery__image"
-             [src]="image" alt="image">
-      </div>
+    <mat-card>
+      <nav mat-tab-nav-bar>
+        <a mat-tab-link [routerLink]="routeNames.Gallery" routerLinkActive #galleryRla="routerLinkActive" [active]="galleryRla.isActive">
+          Gallery
+        </a>
+        <a mat-tab-link [routerLink]="routeNames.Video" routerLinkActive #videoRla="routerLinkActive" [active]="videoRla.isActive">
+          Video
+        </a>
+      </nav>
+
+      <router-outlet></router-outlet>
     </mat-card>
   </div>
 </ng-container>
