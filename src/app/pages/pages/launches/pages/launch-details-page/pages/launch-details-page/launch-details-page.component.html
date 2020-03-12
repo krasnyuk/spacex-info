@@ -12,7 +12,8 @@
           </mat-card-header>
           <mat-card-content>
             <p class="mat-body">{{launch?.details}}</p>
-            <div class="external-links" *ngIf="launch?.links as launchLinks" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+            <div class="external-links" *ngIf="launch?.links as launchLinks" fxLayout="row" fxLayoutAlign="start center"
+                 fxLayoutGap="10px">
               <a spxExternalLink *ngIf="launchLinks.wikipedia as wikiLink" [href]="wikiLink"
                  matTooltip="Wikipedia" mat-mini-fab>
                 <mat-icon>info</mat-icon>
@@ -41,10 +42,12 @@
 
     <mat-card>
       <nav mat-tab-nav-bar>
-        <a mat-tab-link [routerLink]="routeNames.Gallery" routerLinkActive #galleryRla="routerLinkActive" [active]="galleryRla.isActive">
+        <a *ngIf="launch?.links?.flickr_images" mat-tab-link [routerLink]="routeNames.Gallery" routerLinkActive
+           #galleryRla="routerLinkActive" [active]="galleryRla.isActive">
           Gallery
         </a>
-        <a mat-tab-link [routerLink]="routeNames.Video" routerLinkActive #videoRla="routerLinkActive" [active]="videoRla.isActive">
+        <a mat-tab-link [routerLink]="routeNames.Video" routerLinkActive #videoRla="routerLinkActive"
+           [active]="videoRla.isActive">
           Video
         </a>
       </nav>

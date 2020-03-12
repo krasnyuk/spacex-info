@@ -1,6 +1,6 @@
-import {Action, Selector, State, StateContext} from '@ngxs/store';
+import {Action, createSelector, Selector, State, StateContext} from '@ngxs/store';
 import {LoadLaunchDetails} from './launch-details.actions';
-import {Launch} from "../../../../../../models/launches/launch.model";
+import {Launch, Links} from "../../../../../../models/launches/launch.model";
 import {SpacexDataService} from "../../../../../../core/services/spacex-data.service";
 import {tap} from "rxjs/operators";
 
@@ -28,6 +28,14 @@ export class LaunchDetailsState {
   @Selector()
   static launchDetails(state: LaunchDetailsStateModel): Launch | null {
     return state.launch;
+  }
+
+  @Selector()
+  static launchYoutubeVideoId(state: LaunchDetailsStateModel): string | null {
+    if (!state.launch || !state.launch.links || !state.launch.links.youtube_id) {
+      return null;
+    }
+    return state.launch.links.youtube_id;
   }
 
   constructor(private spacexDataService: SpacexDataService) {}
